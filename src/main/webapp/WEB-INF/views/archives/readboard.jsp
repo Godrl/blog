@@ -93,6 +93,7 @@
 					<input type='hidden' name='boardCat' value="${boardVO.boardCat}"> 
 					<input type='hidden' name='page' value="${search.page}"> 
 					<input type='hidden' name='perPageNum' value="${search.perPageNum}">
+					<input type='hidden' name='replyPageNum' value="${search.replyPageNum}">
 					<input type='hidden' name='searchType' value="${search.searchType}">
 					<input type='hidden' name='keyword' value="${search.keyword}">
 				</form>
@@ -128,7 +129,8 @@
 							</li>
 						</ul>
 						<div class="text-center">
-							<ul id="pagination" class="pagination pagination-sm no-margin"></ul>
+							<ul id="pagination" class="pagination pagination-sm no-margin">
+							</ul>
 						</div>
 					</div>
 		    
@@ -155,7 +157,6 @@
 						<input type="email" class="form-control" placeholder="Email" name="email" required="required" id="Replyer">
 						<textarea name="message" rows="5" class="form-control" id="Replytext" placeholder="Message" required="required"></textarea>
 						<div class="col-md-3 col-sm-4">
-							
 							<input name="submit" type="submit" class="form-control" id="AddReply" value="Post Your Comment">
 						</div>
 					</div>
@@ -213,16 +214,17 @@
 	
 	//페이지 정보 얻기
 	function getPage(pageInfo) {
+		
 		$.getJSON(pageInfo, function(data) {
 			printData(data.list, $("#repliesDiv"), $("#template"));
 			printPaging(data.pageutil, $(".pagination"));
 
 			$("#modifyModal").modal("hide");
-			$("#replynumSmall").html("["+ data.pageutil.totalCount +"]");
+			$("#replynumSmall").html("["+ data.pageutil.Rpltotal +"]");
 		});
 	}
 	
-	//페이징 기능
+	//댓글 페이징 기능
 	var printPaging = function(pageutil, target) {
 
 		var str = "";
@@ -260,12 +262,12 @@
 	});
 	
 	//댓글 페이지 처리.
-	$(".pagination").on("click", "li a", function() {
+	$(".pagination").on("click", "li a", function(event) {
 		event.preventDefault();
 
 		replypage = $(this).attr("href");
 
-		getPage("/replies/" + boardno + "/" + replypage+"/"+boardCat);
+		getPage("/replies/" + boardno + "/" +replypage+"/"+boardCat);
 	});
 	
 	//댓글등록

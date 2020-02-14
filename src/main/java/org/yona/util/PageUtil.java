@@ -8,7 +8,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 public class PageUtil {
 
-	private int totalCount; // 전체 게시물 개수
+	private int BDtotal; // 전체 게시물 개수
+	private int Rpltotal; // 전체 댓글 개수
 	private int startPage; // 페이지 시작 번호
 	private int endPage; // 페이지 끝 번호
 	private boolean prev; // 페이지 이전목록 이동
@@ -18,11 +19,24 @@ public class PageUtil {
 
 	private Criteria cri;
 
-	public void setTotalCount(int totalCount) {
-		this.totalCount = totalCount;
-		calcPage();
+	public int getBDtotal() {
+		return BDtotal;
 	}
 
+	public void setBDtotal(int bDtotal) {
+		this.BDtotal = bDtotal;
+		calcBDPage();
+	}
+	
+	public int getRpltotal() {
+		return BDtotal;
+	}
+
+	public void setRpltotal(int rpltotal) {
+		this.Rpltotal = rpltotal;
+		calcRplPage();
+	}
+	
 	public int getStartPage() {
 		return startPage;
 	}
@@ -62,10 +76,6 @@ public class PageUtil {
 	public void setDisplayPageNum(int displayPageNum) {
 		this.displayPageNum = displayPageNum;
 	}
-
-	public int getTotalCount() {
-		return totalCount;
-	}
 	
 	public Criteria getCri() {
 		return cri;
@@ -76,25 +86,42 @@ public class PageUtil {
 	}
 
 
-	// 시작페이지,끝 페이지 구하기
-	public void calcPage() {
+	// 게시글 시작페이지,끝 페이지 구하기
+	public void calcBDPage() {
 
 		endPage = (int) (Math.ceil(cri.getPage() / (double) displayPageNum) * displayPageNum);
 
 		startPage = endPage - (displayPageNum - 1);
 
-		int tempEndPage = (int) (Math.ceil(totalCount / (double) cri.getPerPageNum()));
+		int tempEndPage = (int) (Math.ceil(BDtotal / (double) cri.getPerPageNum()));
 		if (endPage > tempEndPage) {
 			endPage = tempEndPage;
 		}
 
 		prev = startPage == 1 ? false : true;
-		next = endPage * cri.getPerPageNum() >= totalCount ? false : true;
+		next = endPage * cri.getPerPageNum() >= BDtotal ? false : true;
+
+	}
+	
+	// 댓글 시작페이지,끝 페이지 구하기
+	public void calcRplPage() {
+
+		endPage = (int) (Math.ceil(cri.getPage() / (double) displayPageNum) * displayPageNum);
+
+		startPage = endPage - (displayPageNum - 1);
+
+		int tempEndPage = (int) (Math.ceil(Rpltotal / (double) cri.getReplyPageNum()));
+		if (endPage > tempEndPage) {
+			endPage = tempEndPage;
+		}
+
+		prev = startPage == 1 ? false : true;
+		next = endPage * cri.getReplyPageNum() >= Rpltotal ? false : true;
 
 	}
 
 	
-	// 페이지 이동할때 정보를 가지고 가기 위한 쿼리
+	// 페이지 이동할때 필요한 정보를 가지고 가기 위한 쿼리
 	public String makeQuery(int page) {
 
 		UriComponents uriCompo = UriComponentsBuilder.newInstance()
@@ -108,7 +135,7 @@ public class PageUtil {
 	}
 
 	
-	// 현재 페이지,페이지당 보여질 게시물 개수 정보를 가지고 가기 위한 쿼리
+	// 검색할 때 현재페이지와 페이지당 보여질 게시물 숫자 정보를 가지고 검색하기 위한 쿼리
 	public String makeSearch(int page) {
 
 		UriComponents uricompo = UriComponentsBuilder.newInstance()
@@ -137,7 +164,8 @@ public class PageUtil {
 
 	@Override
 	public String toString() {
-		return "PageUtil [totalCount=" + totalCount + ", startPage=" + startPage + ", endPage=" + endPage + ", prev="
+		return "PageUtil [BDtotal=" + BDtotal + ", Rpltotal="+ Rpltotal +", startPage=" + startPage + ", endPage=" + endPage + ", prev="
 				+ prev + ", next=" + next + "," + displayPageNum + ", cri=" + cri + "]";
 	}
+
 }

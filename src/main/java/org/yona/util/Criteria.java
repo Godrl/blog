@@ -47,9 +47,16 @@ public class Criteria {
 		return (this.page - 1) * perPageNum;
 	}
 	
+	//method for Mybatis SQL
 	public int getReplyPageNum() {
 		return replyPageNum;
 	}
+	
+	//method for Mybatis SQL
+	public int getRplStart() {
+		return (this.page - 1) * replyPageNum;
+	}
+	
 	
 	@Override
 	public String toString() {

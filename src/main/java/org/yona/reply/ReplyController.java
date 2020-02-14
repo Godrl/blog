@@ -122,7 +122,7 @@ public class ReplyController {
 	}
 	
 	
-	//댓글 조회
+	//전체댓글 조회
 	@RequestMapping(value = "/all/{boardno}", method = RequestMethod.GET)
 	public ResponseEntity<List<ReplyVO>> allList(@PathVariable("boardno") int boardno,ReplyVO rvo){
 		logger.info("==================allList GET==================");
@@ -150,7 +150,7 @@ public class ReplyController {
 	}
 	
 	
-	//
+	//페이지 당 댓글조회
 	@RequestMapping(value = "/{boardno}/{page}/{boardCat}", method = RequestMethod.GET)
 	public ResponseEntity<Map<String,Object>> replylist(@PathVariable("boardno") int boardno, @PathVariable("page") int page,ReplyVO rvo){
 		logger.info("==================replyList GET==================");
@@ -166,14 +166,12 @@ public class ReplyController {
 				pageutil.setCri(cri);
 				
 				Map<String,Object> map = new HashMap<String,Object>();
-				
 				List<ReplyVO> list = rservice.JavaRpllist(boardno, cri);
-				
 				map.put("list", list);
 				
 				int replyCount = rservice.JavaRplcount(boardno);
-				pageutil.setTotalCount(replyCount);
-				
+				pageutil.setRpltotal(replyCount);
+
 				map.put("pageutil", pageutil);
 				
 				entity = new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
@@ -191,13 +189,12 @@ public class ReplyController {
 				pageutil.setCri(cri);
 				
 				Map<String,Object> map = new HashMap<String,Object>();
-				
 				List<ReplyVO> list = rservice.JspRpllist(boardno, cri);
 				
 				map.put("list", list);
 				
 				int replyCount = rservice.JspRplcount(boardno);
-				pageutil.setTotalCount(replyCount);
+				pageutil.setRpltotal(replyCount);
 				
 				map.put("pageutil", pageutil);
 				

@@ -53,8 +53,10 @@ public class ReplyServiceImp implements ReplyService{
 	@Transactional
 	@Override
 	public void JavaRpldel(int replyno) throws Exception {
+		int boardno = replyDao.JavaRplbno(replyno);
+		
 		replyDao.JavaRpldel(replyno);
-		boardDao.UdtjavaRpln(replyDao.JspRplbno(replyno), -1);
+		boardDao.UdtjavaRpln(boardno, -1);
 	}
 
 	@Override

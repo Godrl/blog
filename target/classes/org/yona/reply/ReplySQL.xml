@@ -7,13 +7,14 @@
 
 <!--  Java-->
 
+
 	<select id="JavaRpllist" resultType="ReplyVO">
 		SELECT *
 		FROM JAVA_REPLY
 		WHERE 
 			boardno = #{boardno}
 		ORDER BY REPLYNO DESC
-		LIMIT #{cri.pageStart},#{cri.replyPageNum}
+		LIMIT #{cri.rplStart},#{cri.replyPageNum}
 	</select>
 	
 	<select id="JavaRplall" resultType="ReplyVO">
@@ -50,7 +51,7 @@
 	<delete id="JavaRpldel">
 		DELETE FROM JAVA_REPLY 
 		WHERE 
-			replyno = #{replyno} and boardCat = cast(#{boardCat} as char(50))
+			replyno = #{replyno}
 	</delete>
 	
 	<select id="JavaRplbno" resultType="int">
@@ -60,7 +61,10 @@
 	</select>
 	
 	
-<!--Jsp  -->
+
+<!--  Jsp-->
+
+
 	<select id="JspRpllist" resultType="ReplyVO">
 		SELECT *
 		FROM JSP_REPLY

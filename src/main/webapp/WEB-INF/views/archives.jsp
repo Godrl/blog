@@ -106,7 +106,7 @@
 									<input type="text" class="form-control" placeholder="Title" name="title" required>
 									<textarea name="content" rows="20" class="form-control" id="content" placeholder="Content" required="required"></textarea>
 									<div class="col-md-3 col-sm-4">
-										<input name="submit" type="submit" class="form-control" id="submit" value="Register">
+										<input name="submit" type="submit" class="form-control" id="submit" value="New archives">
 									</div>
 								</form>
 							</div>
@@ -141,4 +141,4 @@
 		if (result == 'remove') {
 			alert("글이 삭제되었습니다.");
 		}
-</script>
+	</script>

@@ -159,7 +159,7 @@ public class BoardController {
 		
 		PageUtil pageutil = new PageUtil();
 		pageutil.setCri(search);
-		pageutil.setTotalCount(service.javaPcount(search));
+		pageutil.setBDtotal(service.javaPcount(search));
 	
 		model.addAttribute("pageutil", pageutil);
 		
@@ -176,7 +176,7 @@ public class BoardController {
 		
 		PageUtil pageutil = new PageUtil();
 		pageutil.setCri(search);
-		pageutil.setTotalCount(service.jspPcount(search));
+		pageutil.setBDtotal(service.jspPcount(search));
 		
 		model.addAttribute("pageutil", pageutil);
 		
