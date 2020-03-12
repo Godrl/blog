@@ -59,7 +59,7 @@
 		<include refid="search"></include>
 		
 		ORDER BY REGDATE DESC
-		LIMIT ${pageStart},${perPageNum}
+		LIMIT #{pageStart},#{perPageNum}
 	</select>
 	
 	<select id="javaPcount" resultType="int">
@@ -122,7 +122,7 @@
 		<include refid="search"></include>
 		
 		ORDER BY REGDATE DESC
-		LIMIT ${pageStart},${perPageNum}
+		LIMIT #{pageStart},#{perPageNum}
 	</select>
 	
 	<select id="jspPcount" resultType="int">

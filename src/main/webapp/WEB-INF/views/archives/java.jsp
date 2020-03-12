@@ -38,21 +38,20 @@
 			<a href="/" class="navbar-brand">yona</a>
 		</div>
 		<div class="collapse navbar-collapse">
-				<div id="menu">
-					<ul class="nav navbar-nav navbar-right">
-						<li class=""><a href="/">Home</a></li>
-						<li class="active"><a href="/archives">Archives</a>
-							<div class="dropdown-content">
-								<ul id="category">
-									<li class="active"><a href="java">Java</a></li>
-									<li><a href="jsp">JSP</a></li>
-								</ul>
-							</div>
-						</li>
-						<li class=""><a href="/daily"></a></li>
-					</ul>
-				</div>
+			<div id="menu">
+				<ul class="nav navbar-nav navbar-right">
+					<li class=""><a href="/">Home</a></li>
+					<li class="active"><a href="/archives">Archives</a>
+						<div class="dropdown-content">
+							<ul id="category">
+								<li class="active"><a href="java">Java</a></li>
+								<li><a href="jsp">JSP</a></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
 			</div>
+		</div>
 
 	</div>
 </div>

@@ -198,6 +198,7 @@
 		var date = dateObj.getDate();
 		return year + "/" + month + "/" + date;
 	});
+	
 
 	var printData = function(replyArr,target,templateObject) {
 
@@ -245,7 +246,7 @@
 		target.html(str);
 	};
 	
-	//댓글 수정 창 띠우기
+	//댓글 수정창에 정보 보내기
 	$(".timeline").on("click", ".replyLi", function(event) {
 		var reply = $(this);
 
