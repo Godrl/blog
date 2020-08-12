@@ -24,37 +24,61 @@
 	<!--  Java-->
 	
 	<insert id="rgstJava">
+<<<<<<< HEAD
 		INSERT INTO a_java (TITLE,CONTENT,WRITER,BOARDCAT)
+=======
+		INSERT INTO A_JAVA (TITLE,CONTENT,WRITER,BOARDCAT)
+>>>>>>> 72db12440e0aa55882bb491d30c2f3ea5d3be1bf
 		VALUES
 		(#{title}, #{content}, "yona", #{boardCat})
 	</insert>
 	
 	<select id="javalist" resultType="BoardVO">
 		SELECT BOARDNO,TITLE,CONTENT,WRITER,REGDATE,BOARDVIEW,BOARDCAT
+<<<<<<< HEAD
 		FROM a_java
+=======
+		FROM A_JAVA
+>>>>>>> 72db12440e0aa55882bb491d30c2f3ea5d3be1bf
 		ORDER BY REGDATE DESC
 	</select>
 	
 	<select id="readJava" resultType="BoardVO">
 		SELECT BOARDNO,TITLE,CONTENT,WRITER,REGDATE,REPLYNUM,BOARDVIEW,BOARDCAT
+<<<<<<< HEAD
 		FROM a_java
+=======
+		FROM A_JAVA
+>>>>>>> 72db12440e0aa55882bb491d30c2f3ea5d3be1bf
 		WHERE boardno = #{boardno}
 	</select>
 
 	<update id="modJava">
+<<<<<<< HEAD
 		UPDATE a_java
+=======
+		UPDATE A_JAVA
+>>>>>>> 72db12440e0aa55882bb491d30c2f3ea5d3be1bf
 		SET title = #{title}, content = #{content}
 		WHERE boardno = #{boardno}
 	</update>
 
 	<delete id="delJava">
+<<<<<<< HEAD
 		DELETE FROM a_java
+=======
+		DELETE FROM A_JAVA
+>>>>>>> 72db12440e0aa55882bb491d30c2f3ea5d3be1bf
 		WHERE boardno = #{boardno}
 	</delete>
 
 	<select id="javaPinfo" resultType="BoardVO">
 		SELECT *
+<<<<<<< HEAD
 		FROM a_java
+=======
+		FROM A_JAVA
+>>>>>>> 72db12440e0aa55882bb491d30c2f3ea5d3be1bf
 		WHERE BOARDNO &gt; 0
 		<include refid="search"></include>
 		
@@ -64,19 +88,31 @@
 	
 	<select id="javaPcount" resultType="int">
 		SELECT COUNT(BOARDNO)
+<<<<<<< HEAD
 		FROM a_java
+=======
+		FROM A_JAVA
+>>>>>>> 72db12440e0aa55882bb491d30c2f3ea5d3be1bf
 		WHERE BOARDNO &gt; 0
 		<include refid="search"></include>
 	</select>
 	
 	<update id="UdtjavaRpln">
+<<<<<<< HEAD
 		UPDATE a_java
+=======
+		UPDATE A_JAVA
+>>>>>>> 72db12440e0aa55882bb491d30c2f3ea5d3be1bf
 		SET replynum = replynum + #{amount} 
 		WHERE boardno = #{boardno}
 	</update>
 	
 	<update id="UdtjavaView">
+<<<<<<< HEAD
 		UPDATE a_java
+=======
+		UPDATE A_JAVA
+>>>>>>> 72db12440e0aa55882bb491d30c2f3ea5d3be1bf
 		SET BOARDVIEW = BOARDVIEW +1
 		WHERE boardno = #{boardno}
 	</update>

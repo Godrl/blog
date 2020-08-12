@@ -15,6 +15,10 @@
 <link rel="stylesheet" href="../resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="../resources/css/font-awesome.min.css">
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 72db12440e0aa55882bb491d30c2f3ea5d3be1bf
 </head>
 
 <script src="<c:url value="../resources/js/jquery.js"/>"></script>
