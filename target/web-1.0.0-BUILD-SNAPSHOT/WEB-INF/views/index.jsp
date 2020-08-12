@@ -1,0 +1,81 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="false" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<style>
+	.navbar-collapse{
+		position : relative;
+	}
+	#menu a{
+		display : inline-block;
+		position : relative;
+	}
+   	li {
+		padding: 13px 15px 0 15px;
+   	}
+    ul {
+    	list-style:none;
+    }
+   	#category{
+    	visibility : hidden;
+    	position : relative;
+    }
+   	.navbar-right > li:hover #category{
+   		visibility : visible;
+   	}
+   	
+</style>
+
+<%@ include file="include/header.jsp"%>
+
+<!-- Navigation section  -->
+
+	<div class="navbar navbar-default navbar-static-top" role="navigation">
+		<div class="container">
+
+			<div class="navbar-header">
+				<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon icon-bar"></span> <span class="icon icon-bar"></span>
+					<span class="icon icon-bar"></span>
+				</button>
+				<a href="/" class="navbar-brand">yona</a>
+			</div>
+			<div class="collapse navbar-collapse">
+				<div id="menu">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="active"><a href="/">Home</a></li>
+						<li class=""><a href="/archives">Archives</a>
+							<div class="dropdown-content">
+								<ul id="category">
+									<li><a href="archives/java">Java</a></li>
+									<li><a href="archives/jsp">JSP</a></li>
+								</ul>
+							</div>
+						</li>
+						<li class=""><a href="/daily"></a></li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	
+<!-- Home Section -->
+<section id="home" class="main-home parallax-section">
+     <div class="overlay"></div>
+     <div id="particles-js"></div>
+     <div class="container">
+          <div class="row">
+
+               <div class="col-md-12 col-sm-12">
+                    <h1>Hello! This is yona's project.</h1>
+                    <h4>Responsive Blog HTML CSS Website Template</h4>
+               </div>
+
+          </div>
+     </div>
+</section>
+
+<%@ include file="include/footer.jsp"%>
+<script src="<c:url value="../resources/js/particles.min.js"/>"></script>
+<script src="<c:url value="../resources/js/app.js"/>"/></script>

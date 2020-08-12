@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!--	커넥션 풀 설정 작업  **amp; 주의** --> 
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
+		
+		
+		<!-- <property name="url" value="jdbc:log4jdbc:mysql://13.124.47.236:3306/blog?useSSL=false&amp;serverTimezone=UTC"></property>  aws 서버용-->
+		<property name="url" value="jdbc:log4jdbc:mysql://127.0.0.1:3306/blog?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=Asia/Seoul"></property>
+		<property name="username" value="yona"></property>
+		<property name="password" value="0902"></property>
+	</bean>
+	
+	<!-- SqlSessionFactory를 생성해 주는 빈-->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!--	사용할 커넥션 풀과 연결한다.  -->
+		<property name="dataSource" ref="dataSource"/>
+		<!--  mybatis-confg.xml파일이 스프링이 동작할 때 같이 동작하도록 설정 -->
+		<!--	myBatis 환경설정 파일을 무엇으로 할지를 등록한다  -->	
+		<property name="configLocation" value="classpath:/mybatis-config.xml"></property>
+	</bean>
+	
+	<!--	myBatis를 이용해서 커넥션을 처리할 bean  -->
+	<!--  SqlSessionFactory를 생성자로 주입해서 설정  -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>  		
+	
+	<!--  트랜잭션 매니저 설정  -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<!--	만들어진 DAO,Service를 자동주입하기 위한 bean  -->
+	<context:component-scan base-package="org.yona.archives"/>
+	<context:component-scan base-package="org.yona.reply"/>
+	<context:component-scan base-package="org.yona.web" />	
+	<context:component-scan base-package="org.yona.util" />
+	<context:component-scan base-package="org.yona.restapi" />
+	
+	<!--  자동으로 AspectJ Library를 이용해서 Proxy객체를 생성  -->
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>		
+	
+	<!--  AOP기능을 설정할 수 있도록  -->
+	<aop:config></aop:config>
+	
+	<tx:annotation-driven />
+</beans>

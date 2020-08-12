@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration 
+	PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- http://www.mybatis.org./mybatis=3/ko/gettion-started.html 참고 -->
+<configuration>
+	
+	<typeAliases>
+		<typeAlias alias="BoardVO" type="org.yona.archives.BoardVO" />
+		<typeAlias alias="ReplyVO" type="org.yona.reply.ReplyVO" />
+		
+		<!--  mapper 이용시 parameterType이나 resultType을 작성할 때 패키지명을 생략하도록 하는 설정-->
+		<package name="org.yona.archives"/>
+	</typeAliases>
+
+	<mappers>
+		<mapper resource="org/yona/archives/BoardSQL.xml" />
+		<mapper resource="org/yona/reply/ReplySQL.xml" />
+	</mappers>
+
+</configuration>
