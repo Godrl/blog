@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-<<<<<<< HEAD
 	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:beans="http://www.springframework.org/schema/beans"
@@ -14,32 +13,13 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
-=======
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
-	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
-	xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:tx="http://www.springframework.org/schema/tx"
-	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
-		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
-		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
-		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
->>>>>>> 72db12440e0aa55882bb491d30c2f3ea5d3be1bf
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<!--	커넥션 풀 설정 작업  **amp; 주의** --> 
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
-<<<<<<< HEAD
-		
-		
 		<!-- <property name="url" value="jdbc:log4jdbc:mysql://13.124.47.236:3306/blog?useSSL=false&amp;serverTimezone=UTC"></property>  aws 서버용-->
-		<property name="url" value="jdbc:log4jdbc:mysql://127.0.0.1:3306/blog?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=Asia/Seoul"></property>
-=======
 		<property name="url" value="jdbc:log4jdbc:mysql://127.0.0.1:3306/blog?useSSL=false&amp;serverTimezone=Asia/Seoul"></property>
->>>>>>> 72db12440e0aa55882bb491d30c2f3ea5d3be1bf
 		<property name="username" value="yona"></property>
 		<property name="password" value="0902"></property>
 	</bean>
