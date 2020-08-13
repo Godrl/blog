@@ -1,5 +1,3 @@
-# yona
-
 # blog main
 <img width="1431" alt="스크린샷 2020-01-27 오후 5 52 21" src="https://user-images.githubusercontent.com/33336934/88947012-e971d680-d2ca-11ea-8f0f-957383b2c82c.png">
 
