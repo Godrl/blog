@@ -13,12 +13,20 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+<<<<<<< HEAD
+=======
+	
+>>>>>>> 40a7a4345c1f830777594d2f6a4c072d029d57d9
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<!--	커넥션 풀 설정 작업  **amp; 주의** --> 
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
+<<<<<<< HEAD
 		<!-- <property name="url" value="jdbc:log4jdbc:mysql://ec2ips:3306/blog?useSSL=false&amp;serverTimezone=UTC"></property>  aws 서버용-->
+=======
+		<!-- <property name="url" value="jdbc:log4jdbc:mysql://13.124.47.236:3306/blog?useSSL=false&amp;serverTimezone=UTC"></property>  aws 서버용-->
+>>>>>>> 40a7a4345c1f830777594d2f6a4c072d029d57d9
 		<property name="url" value="jdbc:log4jdbc:mysql://127.0.0.1:3306/blog?useSSL=false&amp;serverTimezone=Asia/Seoul"></property>
 		<property name="username" value="yona"></property>
 		<property name="password" value="0902"></property>
