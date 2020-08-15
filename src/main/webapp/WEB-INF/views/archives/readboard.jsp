@@ -88,16 +88,15 @@
 			<div class="col-md-offset-1 col-md-12 col-sm-12">
 				<div class="blog-single-post-thumb">
 				
-				<form role="form" action="modify" method="post">
-					<input type='hidden' name='boardno' value="${boardVO.boardno}">
-					<input type='hidden' name='boardCat' value="${boardVO.boardCat}"> 
-					<input type='hidden' name='page' value="${search.page}"> 
-					<input type='hidden' name='perPageNum' value="${search.perPageNum}">
-					<input type='hidden' name='replyPageNum' value="${search.replyPageNum}">
-					<input type='hidden' name='searchType' value="${search.searchType}">
-					<input type='hidden' name='keyword' value="${search.keyword}">
-				</form>
-				
+					<form role="form" action="modify" method="post">
+						<input type='hidden' name='boardno' value="${boardVO.boardno}">
+						<input type='hidden' name='boardCat' value="${boardVO.boardCat}"> 
+						<input type='hidden' name='page' value="${search.page}"> 
+						<input type='hidden' name='perPageNum' value="${search.perPageNum}">
+						<input type='hidden' name='replyPageNum' value="${search.replyPageNum}">
+						<input type='hidden' name='searchType' value="${search.searchType}">
+						<input type='hidden' name='keyword' value="${search.keyword}">
+					</form>
 				
                     <div class="blog-post-title">
                     	<h2>${boardVO.title}</h2>

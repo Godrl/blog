@@ -36,5 +36,6 @@
 	<context:component-scan base-package="org.yona.web" />
 	<context:component-scan base-package="org.yona.archives" />
 	<context:component-scan base-package="org.yona.reply" />
+	<context:component-scan base-package="org.yona.login" />
 	
 </beans:beans>

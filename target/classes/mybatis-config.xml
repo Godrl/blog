@@ -8,22 +8,18 @@
 	<typeAliases>
 		<typeAlias alias="BoardVO" type="org.yona.archives.BoardVO" />
 		<typeAlias alias="ReplyVO" type="org.yona.reply.ReplyVO" />
-<<<<<<< HEAD
-=======
 		<typeAlias alias="LoginVO" type="org.yona.login.LoginVO" />
->>>>>>> 72db12440e0aa55882bb491d30c2f3ea5d3be1bf
-		
+		<typeAlias alias="UserDetailsImp" type="org.yona.util.UserDetailsImp"/>
+
 		<!--  mapper 이용시 parameterType이나 resultType을 작성할 때 패키지명을 생략하도록 하는 설정-->
 		<package name="org.yona.archives"/>
+		<package name="org.yona.login"/>
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="org/yona/archives/BoardSQL.xml" />
 		<mapper resource="org/yona/reply/ReplySQL.xml" />
-<<<<<<< HEAD
-=======
 		<mapper resource="org/yona/login/LoginSQL.xml" />
->>>>>>> 72db12440e0aa55882bb491d30c2f3ea5d3be1bf
 	</mappers>
 
 </configuration>

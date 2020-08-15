@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+"-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="login">
+
+	<select id="selectUserByID" resultType="UserDetailsImp">
+		<![CDATA[
+			SELECT	*
+			FROM	USERS
+			WHERE	ID=#{userid}
+		]]>
+	</select>
+
+	<update id="updateFailCnt">
+		<![CDATA[
+			UPDATE	USERS
+			SET		FAILCOUNT = FAILCOUNT+1
+			WHERE	ID=#{userid}
+		]]>
+	</update>
+
+	<select id="checkFailCnt" resultType="int">
+		<![CDATA[
+			SELECT	FAILCOUNT
+			FROM	USERS
+			WHERE	ID=#{userid}
+		]]>
+	</select>
+	
+	<update id="resetFailCnt">
+		<![CDATA[
+			UPDATE	USERS
+			SET		FAILCOUNT = 0
+			WHERE	ID=#{userid}			
+		]]>
+		
+	</update>
+
+	<update id="updateEnabled">
+		<![CDATA[
+			UPDATE	USERS
+			SET		ENABLED = 0
+			WHERE	ID=#{userid}
+		]]>
+	</update>
+	
+	<insert id="signUp">
+		<![CDATA[
+			INSERT INTO		USERS(ID,EMAIL,PASSWORD)
+			VALUES			(#{id} ,#{email}, #{password}})
+		]]>
+	</insert>
+	
+	
+
+</mapper>

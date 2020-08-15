@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 <%@ page session="false"%>
 
 <style>
@@ -118,17 +119,33 @@
 	</ul>
 </div>
 
-<section id="blog-single-post">
-	<div class="container">
-		<div class="row">
-			<div class="blog-comment-form">
-				<div class="col-md-3 col-sm-4">
-					<input name="submit" type="submit" class="form-control" id="submit" value="New Archives">
+<sec:authorize access="isAnonymous()">
+   <section id="blog-single-post">
+		<div class="container">
+			<div class="row">
+				<div class="blog-comment-form">
+					<div class="col-md-3 col-sm-4">
+						<input name="submit" type="submit" class="form-control" id="submit" value="로그인 후 글을 작성해주세요.">
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</section>
+	</section>
+</sec:authorize>
+
+<sec:authorize access="isAuthenticated()">
+	<section id="blog-single-post">
+		<div class="container">
+			<div class="row">
+				<div class="blog-comment-form">
+					<div class="col-md-3 col-sm-4">
+						<input name="submit" type="submit" class="form-control" id="submit" value="New Archives">
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</sec:authorize>
 
 <%@ include file="../include/footer.jsp"%>
 <script>

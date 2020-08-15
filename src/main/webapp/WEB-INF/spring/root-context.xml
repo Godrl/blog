@@ -18,7 +18,7 @@
 	<!--	커넥션 풀 설정 작업  **amp; 주의** --> 
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
-		<!-- <property name="url" value="jdbc:log4jdbc:mysql://13.124.47.236:3306/blog?useSSL=false&amp;serverTimezone=UTC"></property>  aws 서버용-->
+		<!-- <property name="url" value="jdbc:log4jdbc:mysql://ec2ips:3306/blog?useSSL=false&amp;serverTimezone=UTC"></property>  aws 서버용-->
 		<property name="url" value="jdbc:log4jdbc:mysql://127.0.0.1:3306/blog?useSSL=false&amp;serverTimezone=Asia/Seoul"></property>
 		<property name="username" value="yona"></property>
 		<property name="password" value="0902"></property>
@@ -50,6 +50,7 @@
 	<context:component-scan base-package="org.yona.web" />	
 	<context:component-scan base-package="org.yona.util" />
 	<context:component-scan base-package="org.yona.restapi" />
+	<context:component-scan base-package="org.yona.login" />
 	
 	<!--  자동으로 AspectJ Library를 이용해서 Proxy객체를 생성  -->
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>		

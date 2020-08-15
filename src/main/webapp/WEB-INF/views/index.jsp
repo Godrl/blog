@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 
 <style>
 	.navbar-collapse{
@@ -52,7 +52,16 @@
 								</ul>
 							</div>
 						</li>
-						<li class=""><a href="/daily"></a></li>
+						<sec:authorize access="isAnonymous()">
+							<li class=""><a href="/member/signin">Login</a></li>
+						</sec:authorize>
+						<sec:authorize access="isAuthenticated()">
+							<a href="#" onclick="document.getElementById('logout-form').submit();">로그아웃</a>
+							<form id="logout-form" action="/logout" method="post">
+								<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
+							</form>
+   							<p><sec:authentication property="principal.username"/>${username }님, 반갑습니다.</p>
+						</sec:authorize>
 					</ul>
 				</div>
 			</div>

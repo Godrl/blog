@@ -1,0 +1,8 @@
+.metadata/
+.DS_Store
+.settings/
+.springBeans
+.classpath
+.project
+.recommenders/
+.target/
