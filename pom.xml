@@ -216,7 +216,6 @@
 			<version>${security.version}</version> 
 		</dependency>
 	</dependencies>
-	
 	<build>
 		<plugins>
 			<plugin>

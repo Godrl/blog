@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 
 <style>
@@ -67,18 +67,23 @@ li {
 					<input type="text" name="ID" placeholder="ID"/>
 				</div>
 				<div>
-					<input type="text" name="Email" placeholder="EMAIL"/>
+					<input type="text" name="Email" placeholder="EMAIL" />
 				</div>
 				<div>
-					<input type="password" name="Password" placeholder="PASSWORD"/>
+					<input type="password" id="pw1" name="Password" placeholder="PASSWORD" />
+				</div>
+				<div>
+					<input type="password" id="pw2" name="Confirm Password" placeholder="CONFIRM PASSWORD" />
+					<div class="alert alert-success" id="alert-success">비밀번호가 일치합니다.</div> 
+					<div class="alert alert-danger" id="alert-danger">비밀번호가 일치하지 않습니다.</div>
 				</div>
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				<div class="col-md-3 col-sm-4">
-						<input name="submit" type="submit" class="form-control" id="submit" value="Sign Up">
+					<input name="submit" type="submit" class="form-control" id="submit" value="Sign Up">
 				</div>
 			</form>
 		</div>
-		<span>
+		<span> 
 			<c:if test="${not empty errormsg}">
 				<p><font color="red"> ${errormsg }</font></p>
 			</c:if>
@@ -87,3 +92,25 @@ li {
 </section>
 
 <%@ include file="../include/footer.jsp"%>
+
+<script type="text/javascript">
+	$(function() {
+		$("#alert-success").hide();
+		$("#alert-danger").hide();
+		$("input").keyup(function() {
+			var pwd1 = $("#pw1").val();
+			var pwd2 = $("#pw2").val();
+			if (pwd1 != "" || pwd2 != "") {
+				if (pwd1 == pwd2) {
+					$("#alert-success").show();
+					$("#alert-danger").hide();
+					$("#submit").removeAttr("disabled");
+				} else {
+					$("#alert-success").hide();
+					$("#alert-danger").show();
+					$("#submit").attr("disabled", "disabled");
+				}
+			}
+		});
+	});
+</script>
