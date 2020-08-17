@@ -1,4 +1,4 @@
-# 원하는 디자인의 template을 가져와 Customizing
+# 원하는 디자인의 template을 Customizing
 https://www.tooplate.com/view/2085-neuron
 
 # blog main
