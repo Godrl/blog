@@ -58,36 +58,37 @@ li {
 	</div>
 </div>
 
-<section id="contact">
+<section id="signup">
 	<div class="container">
-		<h3>Sign Up</h3>
-		<div class="col-md-offset-1 col-md-10 col-sm-12">
-			<form action="/signup" method="post">
-				<div>
-					<input type="text" name="ID" placeholder="ID"/>
-				</div>
-				<div>
-					<input type="text" name="Email" placeholder="EMAIL" />
-				</div>
-				<div>
-					<input type="password" id="pw1" name="Password" placeholder="PASSWORD" />
-				</div>
-				<div>
-					<input type="password" id="pw2" name="Confirm Password" placeholder="CONFIRM PASSWORD" />
-					<div class="alert alert-success" id="alert-success">비밀번호가 일치합니다.</div> 
-					<div class="alert alert-danger" id="alert-danger">비밀번호가 일치하지 않습니다.</div>
-				</div>
-				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-				<div class="col-md-3 col-sm-4">
-					<input name="submit" type="submit" class="form-control" id="submit" value="Sign Up">
-				</div>
-			</form>
+		<div class="row">
+			<h3>Sign Up</h3>
+			<div class="col-md-offset-1 col-md-10 col-sm-12">
+				<form action="/signup" method="post">
+					<div>
+						<label for="id"><b>ID</b></label>
+						<input type="text" class="form-control" name="ID" placeholder="ID"/>
+					</div>
+					<div>
+						<label for="email"><b>Email</b></label>
+						<input type="email" class="form-control" name="Email" placeholder="EMAIL" />
+					</div>
+					<div>
+						<label for="psw"><b>Password</b></label>
+						<input type="password" class="form-control" id="pw1" name="Password" placeholder="PASSWORD" />
+					</div>
+					<div>
+						<label for="psw-repeat"><b>Repeat Password</b></label>
+						<input type="password" class="form-control" id="pw2" name="Confirm Password" placeholder="CONFIRM PASSWORD" />
+						<div class="alert alert-success" id="alert-success">비밀번호가 일치합니다.</div> 
+						<div class="alert alert-danger" id="alert-danger">비밀번호가 일치하지 않습니다.</div>
+					</div>
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+					<div class="col-md-3 col-sm-4">
+						<input name="submit" type="submit" class="form-control" id="submit" value="Sign Up">
+					</div>
+				</form>
+			</div>
 		</div>
-		<span> 
-			<c:if test="${not empty errormsg}">
-				<p><font color="red"> ${errormsg }</font></p>
-			</c:if>
-		</span>
 	</div>
 </section>
 
