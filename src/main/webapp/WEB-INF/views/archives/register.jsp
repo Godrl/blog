@@ -1,31 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 <%@ page session="false" %>
-
-<style>
-	.navbar-collapse{
-		position : relative;
-	}
-	#menu a{
-		display : inline-block;
-		position : relative;
-	}
-   	li {
-		padding: 13px 15px 0 15px;
-   	}
-    ul {
-    	list-style:none;
-    }
-   	#category{
-    	visibility : hidden;
-    	position : relative;
-    }
-   	.navbar-right > li:hover #category{
-   		visibility : visible;
-   	}
-   	
-</style>
 
 <%@ include file="../include/header.jsp"%>
 <!-- Home Section -->
@@ -52,7 +29,16 @@
 							</ul>
 						</div>
 					</li>
-					<li class=""><a href="/daily"></a></li>
+					<sec:authorize access="isAnonymous()">
+						<li class=""><a href="/member/signin">Login</a></li>
+					</sec:authorize>
+					<sec:authorize access="isAuthenticated()">
+						<a href="#" onclick="document.getElementById('logout-form').submit();">로그아웃</a>
+						<form id="logout-form" action="/logout" method="post">
+							<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
+						</form>
+   						<p><sec:authentication property="principal.username"/>${username }님, 반갑습니다.</p>
+					</sec:authorize>
 				</ul>
 			</div>
 		</div>

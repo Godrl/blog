@@ -14,7 +14,7 @@
 			</div>
 
 			<div class="col-md-10 col-md-offset-3 col-sm-6">
-				<h3>Talk to me</h3>
+				<h3>Please contact me below</h3>
 				<p><i class="fa fa-phone"></i> 010-6228-9619</p>
 				<p><i class="fa fa-save"></i> gusrl0515@gmail.com</p>
 			</div>

@@ -3,30 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 
-<style>
-.navbar-collapse {
-	position: relative;
-}
-
-#menu a {
-	display: inline-block;
-	position: relative;
-}
-
-li {
-	padding: 13px 15px 0 15px;
-}
-
-#category {
-	visibility: hidden;
-	position: relative;
-}
-
-.navbar-right>li:hover #category {
-	visibility: visible;
-}
-</style>
-
 <%@ include file="../include/header.jsp"%>
 
 <div class="navbar navbar-default navbar-static-top" role="navigation">
@@ -43,14 +19,24 @@ li {
 			<div id="menu">
 				<ul class="nav navbar-nav navbar-right">
 					<li class=""><a href="/">Home</a></li>
-					<li class="active"><a href="/archives">Archives</a>
+					<li class=""><a href="/archives">Archives</a>
 						<div class="dropdown-content">
 							<ul id="category">
-								<li class="active"><a href="java">Java</a></li>
+								<li class=""><a href="java">Java</a></li>
 								<li><a href="jsp">JSP</a></li>
 							</ul>
 						</div>
 					</li>
+					<sec:authorize access="isAnonymous()">
+						<li class="active"><a href="/member/signin">Login</a></li>
+					</sec:authorize>
+					<sec:authorize access="isAuthenticated()">
+						<a href="#" onclick="document.getElementById('logout-form').submit();">로그아웃</a>
+						<form id="logout-form" action="/logout" method="post">
+							<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
+						</form>
+   						<p><sec:authentication property="principal.username"/>${username }님, 반갑습니다.</p>
+					</sec:authorize>
 				</ul>
 			</div>
 		</div>
@@ -66,19 +52,19 @@ li {
 				<form action="/signup" method="post">
 					<div>
 						<label for="id"><b>ID</b></label>
-						<input type="text" class="form-control" name="ID" placeholder="ID"/>
+						<input type="text" class="form-control" name="ID" placeholder="ID" required/>
 					</div>
 					<div>
 						<label for="email"><b>Email</b></label>
-						<input type="email" class="form-control" name="Email" placeholder="EMAIL" />
+						<input type="email" class="form-control" name="Email" placeholder="EMAIL" required/>
 					</div>
 					<div>
 						<label for="psw"><b>Password</b></label>
-						<input type="password" class="form-control" id="pw1" name="Password" placeholder="PASSWORD" />
+						<input type="password" class="form-control" id="pw1" name="Password" placeholder="PASSWORD" required/>
 					</div>
 					<div>
 						<label for="psw-repeat"><b>Repeat Password</b></label>
-						<input type="password" class="form-control" id="pw2" name="Confirm Password" placeholder="CONFIRM PASSWORD" />
+						<input type="password" class="form-control" id="pw2" name="Confirm Password" placeholder="CONFIRM PASSWORD" required/>
 						<div class="alert alert-success" id="alert-success">비밀번호가 일치합니다.</div> 
 						<div class="alert alert-danger" id="alert-danger">비밀번호가 일치하지 않습니다.</div>
 					</div>

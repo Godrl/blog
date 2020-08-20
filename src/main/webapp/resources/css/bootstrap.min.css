@@ -4551,6 +4551,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 }
 
 .navbar-collapse {
+	position: relative;
 	padding-right: 15px;
 	padding-left: 15px;
 	overflow-x: visible;

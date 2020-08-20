@@ -2,30 +2,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 
-<style>
-	.navbar-collapse{
-		position : relative;
-	}
-	#menu a{
-		display : inline-block;
-		position : relative;
-	}
-   	li {
-		padding: 13px 15px 0 15px;
-   	}
-    ul {
-    	list-style:none;
-    }
-   	#category{
-    	visibility : hidden;
-    	position : relative;
-    }
-   	.navbar-right > li:hover #category{
-   		visibility : visible;
-   	}
-   	
-</style>
-
 <%@ include file="include/header.jsp"%>
 
 <!-- Navigation section  -->

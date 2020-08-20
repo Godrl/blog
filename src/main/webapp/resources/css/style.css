@@ -273,6 +273,20 @@ rotate
 	background-color: transparent;
 }
 
+.navbar-right>li:hover #category {
+	visibility: visible;
+}
+
+#category {
+	visibility: hidden;
+	position: relative;
+}
+
+#menu a {
+	display: inline-block;
+	position: relative;
+}
+
 /*---------------------------------------
     Home section              
 -----------------------------------------*/
@@ -621,6 +635,50 @@ rotate
 #blog-single-post .blog-post-des h3 {
 	padding-top: 16px;
 }
+
+
+/*---------------------------------------
+   SignIn section              
+-----------------------------------------*/
+#signin h3 {
+	padding-bottom: 18px;
+}
+
+#about .col-md-6, #about .col-md-4, #signin .col-md-4 {
+	padding-left: 0px;
+}
+
+#signin .form-control {
+	box-shadow: none;
+	border: 2px solid #f0f0f0;
+	margin-top: 0;
+	margin-bottom: 30px;
+	transition: all 0.4s ease-in-out;
+}
+
+#signin .form-control:hover {
+	border-color: #555;
+}
+
+#signin input {
+	height: 45px;
+}
+
+#signin input[type="submit"] {
+	background: #bfba55;
+	border-radius: 100px;
+	border: none;
+	color: #ffffff;
+	font-weight: bold;
+	transition: all 0.4s ease-in-out;
+}
+
+#signin input[type="submit"]:hover {
+	background: #333;
+	border-color: transparent;
+	color: #ffffff;
+}
+
 
 /*---------------------------------------
    SignUp section              
