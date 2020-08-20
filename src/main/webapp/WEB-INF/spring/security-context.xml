@@ -10,19 +10,19 @@
 	<context:component-scan base-package="org.yona"/>
 	
 	<http auto-config="true">
-	    <intercept-url pattern="/user/**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/>
-	    <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
+	    <intercept-url pattern="/archives" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/>
+	    <intercept-url pattern="/archives/register" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/>
 	    <intercept-url pattern="/**" access="permitAll"/>
 	    <form-login username-parameter="userid"
         			password-parameter="userpw"
         			login-processing-url="/login"
-        			login-page="/signin"
+        			login-page="/member/signin"
         			default-target-url="/"
         			authentication-failure-handler-ref="loginFailHandler"
         			authentication-success-handler-ref="loginSuccessHandler"
 		/>
         			
-		<access-denied-handler error-page="/denyaccess"/>
+		<access-denied-handler error-page="/member/denyaccess"/>
 		
 		<logout invalidate-session="true"
         		logout-success-url="/"/>
@@ -32,8 +32,8 @@
         		max-sessions  	최대 허용 가능 세션 수 
         		expired-url		중복 로그인이 일어났을때 이동할 페이지
         -->	
-        <session-management invalid-session-url="/signin">
-        	<concurrency-control max-sessions="1" expired-url="/signin"/>
+        <session-management invalid-session-url="/member/signin">
+        	<concurrency-control max-sessions="1" expired-url="/member/signin"/>
         </session-management>
         		
 	</http>
@@ -56,7 +56,7 @@
 		<beans:property name="userid" value="userid"/>
 		<beans:property name="userpw" value="userpw"/>
 		<beans:property name="errmsg" value="errormsg"/>
-		<beans:property name="defaultUrl" value="/signin?error"/>
+		<beans:property name="defaultUrl" value="/member/signin?error"/>
 	</beans:bean>
 	
 	<beans:bean id="loginSuccessHandler" class="org.yona.util.AuthenticationSuccess">

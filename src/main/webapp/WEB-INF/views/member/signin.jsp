@@ -23,8 +23,8 @@
 					<li class=""><a href="/archives">Archives</a>
 						<div class="dropdown-content">
 							<ul id="category">
-								<li class=""><a href="java">Java</a></li>
-								<li><a href="jsp">JSP</a></li>
+								<li class=""><a href="/archives/java">Java</a></li>
+								<li><a href="/archives/jsp">JSP</a></li>
 							</ul>
 						</div>
 					</li>
@@ -32,11 +32,11 @@
 						<li class="active"><a href="/member/signin">Login</a></li>
 					</sec:authorize>
 					<sec:authorize access="isAuthenticated()">
-						<a href="#" onclick="document.getElementById('logout-form').submit();">로그아웃</a>
-						<form id="logout-form" action="/logout" method="post">
-							<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
-						</form>
-   						<p><sec:authentication property="principal.username"/>${username }님, 반갑습니다.</p>
+	   						<p><sec:authentication property="principal.username"/>${username }님.</p>
+	   						<a href="#" onclick="document.getElementById('logout-form').submit();">로그아웃</a>
+							<form id="logout-form" action="/logout" method="post">
+								<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
+							</form>
 					</sec:authorize>
 				</ul>
 			</div>
@@ -52,28 +52,30 @@
 			<div class="col-md-offset-1 col-md-10 col-sm-12">
 				<form action="/login" method="post">
 					<div>
-						<input type="text" class="form-control" placeholder="ID" name="userid" value="${userid }" required>
+						<input type="text" class="form-control" placeholder="ID" name="userid" value="${userid }" required/>
 					</div>
 					<div>
-						<input type="password" class="form-control" placeholder="Password" name="userpw" value="${userpw }" required>
+						<input type="password" class="form-control" placeholder="Password" name="userpw" value="${userpw }" required/>
 					</div>
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-					<div class="col-md-3 col-sm-4"s>
+					<div class="col-md-3 col-sm-4">
 						<input name="submit" type="submit" class="form-control" id="submit" value="Sign in">
 					</div>
 				</form>
 				<div class="col-md-3 col-sm-4">
 					<input name="submit" type="submit" class="form-control" id="signup" value="Sign up">
 				</div>
+				<div>
+					<c:if test="${not empty errormsg}">
+						<p><font color="red"> ${errormsg }</font></p>
+					</c:if>
+				</div>
 			</div>
-			<div>
-				<c:if test="${not empty errormsg}">
-					<p><font color="red"> ${errormsg }</font></p>
-				</c:if>
-			</div>
-		</div>>
+		</div>
 	</div>
 </section>
+
+<%@ include file="../include/footer.jsp"%>
 
 <script>
 	$(document).ready(function() {
@@ -83,5 +85,3 @@
 		});
 	});
 </script>
-
-<%@ include file="../include/footer.jsp"%>

@@ -1,7 +1,6 @@
 package org.yona.util;
 
 import java.util.Locale;
-
 import org.springframework.context.support.MessageSourceAccessor;
 
 public class MessageUtils {

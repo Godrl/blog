@@ -34,11 +34,11 @@
 							<li class=""><a href="/member/signin">Login</a></li>
 						</sec:authorize>
 						<sec:authorize access="isAuthenticated()">
-							<a href="#" onclick="document.getElementById('logout-form').submit();">로그아웃</a>
 							<form id="logout-form" action="/logout" method="post">
 								<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
 							</form>
-   							<p><sec:authentication property="principal.username"/>${username }님, 반갑습니다.</p>
+   							<p><sec:authentication property="principal.username"/>${username }님</p>
+   							<a href="#" onclick="document.getElementById('logout-form').submit();">로그아웃</a>
 						</sec:authorize>
 					</ul>
 				</div>
@@ -66,7 +66,6 @@
 	<section id="blog-single-post">
 		<div class="container">
 			<div class="row">
-	
 				<div class="col-md-offset-1 col-md-10 col-sm-12">
 					<div class="blog-single-post-thumb">
 						<div class="blog-post-title"></div>
