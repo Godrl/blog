@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.yona.login.LoginVO;
 import org.yona.util.PageUtil;
 import org.yona.util.SearchCriteria;
 
@@ -56,7 +57,7 @@ public class BoardController {
 	
 	//게시글 상세보기
 	@RequestMapping(value = "/readboard", method = RequestMethod.GET)
-	public void readboard(@RequestParam("boardno") int boardno, @ModelAttribute("search") SearchCriteria search,Model model,BoardVO bvo)throws Exception{
+	public void readboard(@RequestParam("boardno") int boardno, @ModelAttribute("search") SearchCriteria search,Model model,BoardVO bvo,LoginVO Lvo)throws Exception{
 		logger.info("====================readboard====================");
 		
 		if(bvo.getboardCat().equals("a_java")) {
@@ -65,6 +66,8 @@ public class BoardController {
 		else if(bvo.getboardCat().equals("a_jsp")){
 			model.addAttribute(service.readJsp(boardno));
 		}
+		
+		logger.info("id = "+Lvo.getID());
 	}
 	
 	

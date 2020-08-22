@@ -26,7 +26,7 @@
 	<insert id="rgstJava">
 		INSERT INTO A_JAVA (TITLE,CONTENT,WRITER,BOARDCAT)
 		VALUES
-		(#{title}, #{content}, "yona", #{boardCat})
+		(#{title}, #{content}, #{username}, #{boardCat})
 	</insert>
 	
 	<select id="javalist" resultType="BoardVO">

@@ -33,11 +33,17 @@
 						<li class=""><a href="/member/signin">Login</a></li>
 					</sec:authorize>
 					<sec:authorize access="isAuthenticated()">
-						<form id="logout-form" action="/logout" method="post">
+						<li>
+							<a href="#">${username }<sec:authentication property="principal.username"/></a>
+							<div class="dropdown-content">
+								<ul id="category">
+									<li><a href="#" onclick="document.getElementById('logout-form').submit();">logout</a></li>
+								</ul>
+							</div>		
+   						</li>
+   						<form id="logout-form" action="/logout" method="post">
 							<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
-						</form>
-   						<p><sec:authentication property="principal.username"/>${username }님</p>
-   						<a href="#" onclick="document.getElementById('logout-form').submit();">로그아웃</a>
+						</form>							
 					</sec:authorize>
 				</ul>
 			</div>

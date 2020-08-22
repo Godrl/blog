@@ -6,7 +6,6 @@ public class LoginVO{
 	private String Password;
 	private String Authority;
 	private boolean Enabled;
-	private String Name;
 	private String Email;
 	private int FailCnt;
 	
@@ -35,12 +34,6 @@ public class LoginVO{
 	public void setEnabled(boolean enabled) {
 		Enabled = enabled;
 	}
-	public String getName() {
-		return Name;
-	}
-	public void setName(String name) {
-		Name = name;
-	}
 	public int getFailCnt() {
 		return FailCnt;
 	}
@@ -57,8 +50,7 @@ public class LoginVO{
 	@Override
 	public String toString() {
 		return "LoginVO [ID=" + ID + ", Password=" + Password + ", Authority=" + Authority + ", Enabled=" + Enabled
-				+ ", Name=" + Name + ", FailCnt=" + FailCnt + "]";
+				+ ", Email=" + Email + ", FailCnt=" + FailCnt + "]";
 	}
-	
 
 }

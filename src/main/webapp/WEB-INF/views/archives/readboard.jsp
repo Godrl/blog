@@ -2,7 +2,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
-<%@ page session="false"%>
 
 <%@include file="../include/header.jsp" %>
 
@@ -35,11 +34,17 @@
 							<li class=""><a href="/member/signin">Login</a></li>
 						</sec:authorize>
 						<sec:authorize access="isAuthenticated()">
-							<form id="logout-form" action="/logout" method="post">
+   							<li>
+   								<a href="#">${username }<sec:authentication property="principal.username"/></a>
+   								<div class="dropdown-content">
+									<ul id="category">
+   										<li><a href="#" onclick="document.getElementById('logout-form').submit();">logout</a></li>
+   									</ul>
+   								</div>		
+   							</li>
+   							<form id="logout-form" action="/logout" method="post">
 								<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
-							</form>
-   							<p><sec:authentication property="principal.username"/>${username }님</p>
-   							<a href="#" onclick="document.getElementById('logout-form').submit();">로그아웃</a>
+							</form>							
 						</sec:authorize>
 					</ul>
 				</div>
@@ -74,12 +79,15 @@
 				
 					<form role="form" action="modify" method="post">
 						<input type='hidden' name='boardno' value="${boardVO.boardno}">
-						<input type='hidden' name='boardCat' value="${boardVO.boardCat}"> 
+						<input type='hidden' name='boardCat' value="${boardVO.boardCat}">
+						<input type='hidden' name='id' value="${loginVO.ID}"> 
 						<input type='hidden' name='page' value="${search.page}"> 
 						<input type='hidden' name='perPageNum' value="${search.perPageNum}">
 						<input type='hidden' name='replyPageNum' value="${search.replyPageNum}">
 						<input type='hidden' name='searchType' value="${search.searchType}">
 						<input type='hidden' name='keyword' value="${search.keyword}">
+						
+						
 					</form>
 				
                     <div class="blog-post-title">
@@ -135,14 +143,19 @@
 						{{/each}}		
 					</script>
 					
-                    <div class="blog-comment-form">
+					<sec:authorize access="isAnonymous()">
+						<h3><a href="/member/signin">Please Sign-in to write a comment</a></h3>
+					</sec:authorize>
+					<sec:authorize access="isAuthenticated()">
+   						<div class="blog-comment-form">
 						<h3>Leave a Comment</h3>
-						<input type="email" class="form-control" placeholder="Email" name="email" required="required" id="Replyer">
+						<input type="text" class="form-control" name="id" required="required" id="Replyer" value="${loginVO.ID }" readonly="readonly"/>
 						<textarea name="message" rows="5" class="form-control" id="Replytext" placeholder="Message" required="required"></textarea>
 						<div class="col-md-3 col-sm-4">
 							<input name="submit" type="submit" class="form-control" id="AddReply" value="Post Your Comment">
 						</div>
 					</div>
+   					</sec:authorize>
 					
 					<div id="modifyModal" class="modal modal-primary fade" role="dialog">
 						<div class="modal-dialog">
@@ -162,7 +175,6 @@
 							</div>
 						</div>
 					</div>
-					
 				</div>
 			</div>
 		</div>
