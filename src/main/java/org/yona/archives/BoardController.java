@@ -1,5 +1,7 @@
 package org.yona.archives;
 
+import java.security.Principal;
+
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
@@ -14,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.yona.login.LoginVO;
 import org.yona.util.PageUtil;
 import org.yona.util.SearchCriteria;
+import org.yona.util.UserDetailsImp;
 
 @Controller
 @RequestMapping("/archives/*")
@@ -25,8 +28,11 @@ public class BoardController {
 	
 	//게시글 등록 화면
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public void registerGET(BoardVO bvo, Model model)throws Exception{
+	public void registerGET(BoardVO bvo, Model model,UserDetailsImp user,Principal principal,LoginVO Lvo)throws Exception{
 		logger.info("====================register GET====================");
+		
+		Lvo.setID(principal.getName());
+		
 	}
 	
 	//게시글 등록 처리
@@ -74,8 +80,10 @@ public class BoardController {
 	
 	//게시글 수정 화면
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
-	public void modifyGET(@RequestParam("boardno") int boardno,@ModelAttribute("search") SearchCriteria search,Model model,BoardVO bvo)throws Exception {
+	public void modifyGET(@RequestParam("boardno") int boardno,@ModelAttribute("search") SearchCriteria search,Model model,BoardVO bvo,LoginVO Lvo,Principal principal)throws Exception {
 		logger.info("====================modify GET===================="); 
+		
+		Lvo.setID(principal.getName());
 		
 		if(bvo.getboardCat().equals("a_java")) {
 			model.addAttribute(service.readJava(boardno));

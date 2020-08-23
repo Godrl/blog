@@ -2,7 +2,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
-<%@ page session="false"%>
 
 <%@ include file="../include/header.jsp"%>
 
@@ -75,7 +74,7 @@
 								<input type='hidden' name='boardCat' class="form-control" value="${boardVO.boardCat}"> 
 								<input type="text" class="form-control" placeholder="Title" name="title" required="required" value='${boardVO.title}'>
 								<textarea name="content" rows="20" class="form-control" required="required">${boardVO.content}</textarea>
-								<input type="text" name="writer" class="form-control" value="yona" readonly="readonly">
+								<input type="text" name="writer" class="form-control" value="${boardVO.writer }" readonly="readonly">
 								
 								<div class="col-md-3 col-sm-4">
 									<button type="submit" class="btn btn-modify">수정</button>

@@ -149,7 +149,7 @@
 					<sec:authorize access="isAuthenticated()">
    						<div class="blog-comment-form">
 						<h3>Leave a Comment</h3>
-						<input type="text" class="form-control" name="id" required="required" id="Replyer" value="${loginVO.ID }" readonly="readonly"/>
+						<input type="text" class="form-control" name="writer" required="required" id="Replyer" value="${loginVO.ID }" readonly="readonly"/>
 						<textarea name="message" rows="5" class="form-control" id="Replytext" placeholder="Message" required="required"></textarea>
 						<div class="col-md-3 col-sm-4">
 							<input name="submit" type="submit" class="form-control" id="AddReply" value="Post Your Comment">
