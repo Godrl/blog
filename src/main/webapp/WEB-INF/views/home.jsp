@@ -35,7 +35,6 @@
 	<form id="logout-form" action="/logout" method="post">
 		<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
 	</form>
-
    <p><sec:authentication property="principal.username"/>${username }님, 반갑습니다.</p>
 </sec:authorize>
 

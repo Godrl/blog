@@ -93,6 +93,7 @@
 								<input type="text" class="form-control" placeholder="Title" name="title" required>
 								<textarea name="content" rows="20" class="form-control" id="content" placeholder="Content" required="required"></textarea>
 								<input type="text" name="writer" class="form-control" value="${loginVO.ID }" readonly="readonly">
+								<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
 								<div class="col-md-3 col-sm-4">
 									<input name="submit" type="submit" class="form-control" id="submit" value="Register">
 								</div>

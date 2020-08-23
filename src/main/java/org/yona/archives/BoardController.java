@@ -39,6 +39,7 @@ public class BoardController {
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String registerPOST(BoardVO bvo, RedirectAttributes rttr)throws Exception{
 		logger.info("====================register POST====================");
+		logger.info("writer = "+bvo.getWriter());
 		
 		if(bvo.getboardCat().equals("a_java")) {
 			service.rgstJava(bvo);
@@ -85,11 +86,18 @@ public class BoardController {
 		
 		Lvo.setID(principal.getName());
 		
-		if(bvo.getboardCat().equals("a_java")) {
-			model.addAttribute(service.readJava(boardno));
-		}
-		else if(bvo.getboardCat().equals("a_jsp")){
-			model.addAttribute(service.readJsp(boardno));
+		logger.info("writer = "+bvo.getWriter());
+		logger.info("now user = "+Lvo.getID());
+	
+		try {
+			if(Lvo.getID() == bvo.getWriter() && bvo.getboardCat().equals("a_java")) {
+				model.addAttribute(service.readJava(boardno));
+			}
+			else if(Lvo.getID() == bvo.getWriter() && bvo.getboardCat().equals("a_jsp")){
+				model.addAttribute(service.readJsp(boardno));
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
 		}
 	}
 	
