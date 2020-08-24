@@ -29,17 +29,16 @@ public class BoardController {
 	//게시글 등록 화면
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public void registerGET(BoardVO bvo, Model model,UserDetailsImp user,Principal principal,LoginVO Lvo)throws Exception{
-		logger.info("====================register GET====================");
+		logger.info("=====register GET=====");
 		
 		Lvo.setID(principal.getName());
-		
+
 	}
 	
 	//게시글 등록 처리
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String registerPOST(BoardVO bvo, RedirectAttributes rttr)throws Exception{
-		logger.info("====================register POST====================");
-		logger.info("writer = "+bvo.getWriter());
+		logger.info("=====register POST=====");
 		
 		if(bvo.getboardCat().equals("a_java")) {
 			service.rgstJava(bvo);
@@ -64,8 +63,10 @@ public class BoardController {
 	
 	//게시글 상세보기
 	@RequestMapping(value = "/readboard", method = RequestMethod.GET)
-	public void readboard(@RequestParam("boardno") int boardno, @ModelAttribute("search") SearchCriteria search,Model model,BoardVO bvo,LoginVO Lvo)throws Exception{
-		logger.info("====================readboard====================");
+	public void readboard(@RequestParam("boardno") int boardno, @ModelAttribute("search") SearchCriteria search, Model model, BoardVO bvo, LoginVO Lvo, Principal principal)throws Exception{
+		logger.info("=====readboard=====");
+		
+		Lvo.setID(principal.getName());
 		
 		if(bvo.getboardCat().equals("a_java")) {
 			model.addAttribute(service.readJava(boardno));
@@ -73,8 +74,7 @@ public class BoardController {
 		else if(bvo.getboardCat().equals("a_jsp")){
 			model.addAttribute(service.readJsp(boardno));
 		}
-		
-		logger.info("id = "+Lvo.getID());
+	
 	}
 	
 	
@@ -82,18 +82,15 @@ public class BoardController {
 	//게시글 수정 화면
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
 	public void modifyGET(@RequestParam("boardno") int boardno,@ModelAttribute("search") SearchCriteria search,Model model,BoardVO bvo,LoginVO Lvo,Principal principal)throws Exception {
-		logger.info("====================modify GET===================="); 
+		logger.info("=====modify GET====="); 
 		
 		Lvo.setID(principal.getName());
-		
-		logger.info("writer = "+bvo.getWriter());
-		logger.info("now user = "+Lvo.getID());
 	
 		try {
-			if(Lvo.getID() == bvo.getWriter() && bvo.getboardCat().equals("a_java")) {
+			if(Lvo.getID().equals(bvo.getWriter()) && bvo.getboardCat().equals("a_java")) {
 				model.addAttribute(service.readJava(boardno));
 			}
-			else if(Lvo.getID() == bvo.getWriter() && bvo.getboardCat().equals("a_jsp")){
+			else if(Lvo.getID().equals(bvo.getWriter()) && bvo.getboardCat().equals("a_jsp")){
 				model.addAttribute(service.readJsp(boardno));
 			}
 		}catch(Exception e) {
@@ -105,7 +102,7 @@ public class BoardController {
 	//게시글 수정 처리 
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
 	public String modifyPOST(BoardVO bvo, SearchCriteria search, RedirectAttributes rttr)throws Exception{
-		logger.info("====================modify POST====================");
+		logger.info("=====modify POST=====");
 
 		if(bvo.getTitle().length() > 2) {
 			if(bvo.getboardCat().equals("a_java")) {
@@ -141,7 +138,7 @@ public class BoardController {
 	//게시글 삭제처리
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public String delete(@RequestParam("boardno") int boardno, RedirectAttributes rttr,SearchCriteria search,BoardVO bvo)throws Exception{
-		logger.info("====================delete====================");
+		logger.info("=====delete=====");
 		
 		if(bvo.getboardCat().equals("a_java")) {
 			service.delJava(boardno);
@@ -171,8 +168,7 @@ public class BoardController {
 	//java카테고리 게시글 리스트 
 	@RequestMapping(value = "/java", method = RequestMethod.GET)
 	public void java(@ModelAttribute("search") SearchCriteria search, Model model)throws Exception{
-		logger.info("====================java====================");
-		logger.info("search = "+search.toString());
+		logger.info("=====java=====");
 		
 		model.addAttribute("list", service.javaPinfo(search));
 		
@@ -188,8 +184,7 @@ public class BoardController {
 	//jsp카테고리 게시글 리스트	
 	@RequestMapping(value = "/jsp", method = RequestMethod.GET)
 	public void jsp(@ModelAttribute("search") SearchCriteria search, Model model)throws Exception{
-		logger.info("====================jsp====================");
-		logger.info("search = "+search.toString());
+		logger.info("=====jsp=====");
 		
 		model.addAttribute("list", service.jspPinfo(search));
 		

@@ -74,7 +74,7 @@
 						<div class="alert alert-success" id="alert-success">비밀번호가 일치합니다.</div> 
 						<div class="alert alert-danger" id="alert-danger">비밀번호가 일치하지 않습니다.</div>
 					</div>
-					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 					<div class="col-md-3 col-sm-4">
 						<input name="submit" type="submit" class="form-control" id="submit" value="Sign Up">
 					</div>

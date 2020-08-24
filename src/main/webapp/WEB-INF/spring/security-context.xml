@@ -11,6 +11,7 @@
 	
 	<http auto-config="true">
 	    <intercept-url pattern="/archives" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/>
+	    <intercept-url pattern="/archives/modify" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/>
 	    <intercept-url pattern="/archives/register" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/>
 	    <intercept-url pattern="/**" access="permitAll"/>
 	    <form-login username-parameter="userid"

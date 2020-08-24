@@ -41,7 +41,7 @@
    							</div>		
    						</li>
    						<form id="logout-form" action="/logout" method="post">
-							<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
+							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 						</form>							
 					</sec:authorize>
 				</ul>

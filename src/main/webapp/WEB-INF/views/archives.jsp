@@ -43,7 +43,7 @@
    								</div>		
    							</li>
    							<form id="logout-form" action="/logout" method="post">
-								<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
+								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 							</form>							
 						</sec:authorize>
 					</ul>
@@ -95,6 +95,7 @@
 									</select>
 									<input type="text" class="form-control" placeholder="Title" name="title" required>
 									<textarea name="content" rows="20" class="form-control" id="content" placeholder="Content" required="required"></textarea>
+									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 									<div class="col-md-3 col-sm-4">
 										<input name="submit" type="submit" class="form-control" id="submit" value="New archives">
 									</div>

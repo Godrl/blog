@@ -71,11 +71,11 @@
 								<input type="hidden" name="searchType" value="${search.searchType }">
 								<input type="hidden" name="keyword" value="${search.keyword }">
 								<input type="hidden" name="boardno" class="form-control" value="${boardVO.boardno }" readonly="readonly">
-								<input type='hidden' name='boardCat' class="form-control" value="${boardVO.boardCat}"> 
-								<input type="text" class="form-control" placeholder="Title" name="title" required="required" value='${boardVO.title}'>
-								<textarea name="content" rows="20" class="form-control" required="required">${boardVO.content}</textarea>
+								<input type='hidden' name='boardCat' class="form-control" value="${boardVO.boardCat }"> 
+								<input type="text" class="form-control" placeholder="Title" name="title" required="required" value="${boardVO.title }">
+								<textarea name="content" rows="20" class="form-control" required="required">${boardVO.content }</textarea>
 								<input type="text" name="writer" class="form-control" value="${boardVO.writer }" readonly="readonly">
-								
+								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 								<div class="col-md-3 col-sm-4">
 									<button type="submit" class="btn btn-modify">수정</button>
 									<button type="submit" class="btn btn-cancle">취소</button>

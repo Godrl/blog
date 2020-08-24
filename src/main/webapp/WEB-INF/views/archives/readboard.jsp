@@ -43,7 +43,7 @@
    								</div>		
    							</li>
    							<form id="logout-form" action="/logout" method="post">
-								<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
+								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 							</form>							
 						</sec:authorize>
 					</ul>
@@ -80,14 +80,14 @@
 					<form role="form" action="modify" method="post">
 						<input type='hidden' name='boardno' value="${boardVO.boardno}">
 						<input type='hidden' name='boardCat' value="${boardVO.boardCat}">
+						<input type='hidden' name='writer' value="${boardVO.writer }">
 						<input type='hidden' name='id' value="${loginVO.ID}"> 
 						<input type='hidden' name='page' value="${search.page}"> 
 						<input type='hidden' name='perPageNum' value="${search.perPageNum}">
 						<input type='hidden' name='replyPageNum' value="${search.replyPageNum}">
 						<input type='hidden' name='searchType' value="${search.searchType}">
 						<input type='hidden' name='keyword' value="${search.keyword}">
-						
-						
+						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 					</form>
 				
                     <div class="blog-post-title">
