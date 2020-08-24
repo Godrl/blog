@@ -5,81 +5,35 @@
 
 <%@ include file="../include/header.jsp"%>
 
-<div class="navbar navbar-default navbar-static-top" role="navigation">
-	<div class="container">
-
-		<div class="navbar-header">
-			<button class="navbar-toggle" data-toggle="collapse"
-				data-target=".navbar-collapse">
-				<span class="icon icon-bar"></span> <span class="icon icon-bar"></span>
-				<span class="icon icon-bar"></span>
-			</button>
-			<a href="/" class="navbar-brand">yona</a>
-		</div>
-		<div class="collapse navbar-collapse">
-			<div id="menu">
-				<ul class="nav navbar-nav navbar-right">
-					<li class=""><a href="/">Home</a></li>
-					<li class=""><a href="/archives">Archives</a>
-						<div class="dropdown-content">
-							<ul id="category">
-								<li class=""><a href="/archives/java">Java</a></li>
-								<li><a href="/archives/jsp">JSP</a></li>
-							</ul>
+	<section id="signin">
+		<div class="container">
+			<div class="row">
+				<h3>Login</h3>
+				<div class="col-md-offset-1 col-md-10 col-sm-12">
+					<form action="/login" method="post">
+						<div>
+							<input type="text" class="form-control" placeholder="ID" name="userid" value="${userid }" required/>
 						</div>
-					</li>
-					<sec:authorize access="isAnonymous()">
-						<li class=""><a href="/member/signin">Login</a></li>
-					</sec:authorize>
-					<sec:authorize access="isAuthenticated()">
-   						<li>
-   							<a href="#">${username }<sec:authentication property="principal.username"/></a>
-   							<div class="dropdown-content">
-								<ul id="category">
-   									<li><a href="#" onclick="document.getElementById('logout-form').submit();">logout</a></li>
-   								</ul>
-   							</div>		
-   						</li>
-   						<form id="logout-form" action="/logout" method="post">
-							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-						</form>							
-					</sec:authorize>
-				</ul>
-			</div>
-		</div>
-
-	</div>
-</div>
-
-<section id="signin">
-	<div class="container">
-		<div class="row">
-			<h3>Login</h3>
-			<div class="col-md-offset-1 col-md-10 col-sm-12">
-				<form action="/login" method="post">
-					<div>
-						<input type="text" class="form-control" placeholder="ID" name="userid" value="${userid }" required/>
-					</div>
-					<div>
-						<input type="password" class="form-control" placeholder="Password" name="userpw" value="${userpw }" required/>
-					</div>
-					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+						<div>
+							<input type="password" class="form-control" placeholder="Password" name="userpw" value="${userpw }" required/>
+						</div>
+						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+						<div class="col-md-3 col-sm-4">
+							<input name="submit" type="submit" class="form-control" id="submit" value="Sign in">
+						</div>
+					</form>
 					<div class="col-md-3 col-sm-4">
-						<input name="submit" type="submit" class="form-control" id="submit" value="Sign in">
+						<input name="submit" type="submit" class="form-control" id="signup" value="Sign up">
 					</div>
-				</form>
-				<div class="col-md-3 col-sm-4">
-					<input name="submit" type="submit" class="form-control" id="signup" value="Sign up">
-				</div>
-				<div>
-					<c:if test="${not empty errormsg}">
-						<p><font color="red"> ${errormsg }</font></p>
-					</c:if>
+					<div>
+						<c:if test="${not empty errormsg}">
+							<p><font color="red"> ${errormsg }</font></p>
+						</c:if>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</section>
+	</section>
 
 <%@ include file="../include/footer.jsp"%>
 
@@ -87,7 +41,7 @@
 	$(document).ready(function() {
 
 		$("#signup").on("click", function() {
-			location.href = "signup";
+			location.href = "/member/signup";
 		});
 	});
 </script>

@@ -4,52 +4,6 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 
 <%@ include file="../include/header.jsp"%>
-
-
-<div class="navbar navbar-default navbar-static-top" role="navigation">
-	<div class="container">
-
-		<div class="navbar-header">
-			<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-				<span class="icon icon-bar"></span> <span class="icon icon-bar"></span>
-				<span class="icon icon-bar"></span>
-			</button>
-			<a href="/" class="navbar-brand">yona</a>
-		</div>
-		<div class="collapse navbar-collapse">
-			<div id="menu">
-				<ul class="nav navbar-nav navbar-right">
-					<li class=""><a href="/">Home</a></li>
-					<li class="active"><a href="/archives">Archives</a>
-						<div class="dropdown-content">
-							<ul id="category">
-								<li class="active"><a href="java">Java</a></li>
-								<li><a href="jsp">JSP</a></li>
-							</ul>
-						</div>
-					</li>
-					<sec:authorize access="isAnonymous()">
-						<li class=""><a href="/member/signin">Login</a></li>
-					</sec:authorize>
-					<sec:authorize access="isAuthenticated()">
-						<li>
-							<a href="#">${username }<sec:authentication property="principal.username"/></a>
-							<div class="dropdown-content">
-								<ul id="category">
-									<li><a href="#" onclick="document.getElementById('logout-form').submit();">logout</a></li>
-								</ul>
-							</div>		
-   						</li>
-   						<form id="logout-form" action="/logout" method="post">
-							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-						</form>							
-					</sec:authorize>
-				</ul>
-			</div>
-		</div>
-
-	</div>
-</div>
 	
 <section id='blog-single-post'>
 	<select name="searchType">

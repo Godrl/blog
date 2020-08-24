@@ -29,7 +29,7 @@ public class ReplyController {
 	// 댓글 등록
 	@RequestMapping(value = "", method = RequestMethod.POST)
 	public ResponseEntity<String> register(@RequestBody ReplyVO rvo){
-		logger.info("==================Reply register POST==================");
+		logger.info("=====Reply register POST=====");
 		
 		ResponseEntity<String> entity = null;
 		
@@ -62,7 +62,7 @@ public class ReplyController {
 	//댓글 수정
 	@RequestMapping(value = "/{replyno}", method = {RequestMethod.PUT,RequestMethod.PATCH})
 	public ResponseEntity<String> modify(@PathVariable("replyno") int replyno, @RequestBody ReplyVO rvo){
-		logger.info("==================modify PUT,PATCH==================");
+		logger.info("=====modify PUT,PATCH=====");
 		
 		ResponseEntity<String> entity = null;
 		
@@ -95,7 +95,7 @@ public class ReplyController {
 	//댓글 삭제
 	@RequestMapping(value = "/{replyno}/{boardCat}", method = RequestMethod.DELETE)
 	public ResponseEntity<String> delete(@PathVariable("replyno") int replyno,ReplyVO rvo){
-		logger.info("==================delete DELETE==================");
+		logger.info("=====delete DELETE=====");
 		
 		ResponseEntity<String> entity = null;
 		
@@ -125,7 +125,7 @@ public class ReplyController {
 	//전체댓글 조회
 	@RequestMapping(value = "/all/{boardno}", method = RequestMethod.GET)
 	public ResponseEntity<List<ReplyVO>> allList(@PathVariable("boardno") int boardno,ReplyVO rvo){
-		logger.info("==================allList GET==================");
+		logger.info("=====allList GET=====");
 		
 		ResponseEntity<List<ReplyVO>> entity = null;
 		
@@ -153,7 +153,7 @@ public class ReplyController {
 	//페이지 당 댓글조회
 	@RequestMapping(value = "/{boardno}/{page}/{boardCat}", method = RequestMethod.GET)
 	public ResponseEntity<Map<String,Object>> replylist(@PathVariable("boardno") int boardno, @PathVariable("page") int page,ReplyVO rvo){
-		logger.info("==================replyList GET==================");
+		logger.info("=====replyList GET=====");
 		
 		ResponseEntity<Map<String,Object>> entity = null;
 		
