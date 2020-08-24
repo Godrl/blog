@@ -28,7 +28,6 @@
 			<div class="row">
 				<div class="col-md-offset-1 col-md-12 col-sm-12">
 					<div class="blog-single-post-thumb">
-					
 						<form role="form" action="modify" method="post">
 							<input type='hidden' name='boardno' value="${boardVO.boardno}">
 							<input type='hidden' name='boardCat' value="${boardVO.boardCat}">
@@ -142,10 +141,8 @@
 	    xhr.setRequestHeader(header, token);
 	});
 
-
 //p424
 //날짜 표시 기능 추가
-	
 	Handlebars.registerHelper("prettifyDate", function(timeValue) {
 	
 		var dateObj = new Date(timeValue);

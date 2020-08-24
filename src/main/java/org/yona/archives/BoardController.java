@@ -66,7 +66,8 @@ public class BoardController {
 	public void readboard(@RequestParam("boardno") int boardno, @ModelAttribute("search") SearchCriteria search, Model model, BoardVO bvo, LoginVO Lvo, Principal principal)throws Exception{
 		logger.info("=====readboard=====");
 		
-		Lvo.setID(principal.getName());
+		
+//		Lvo.setID(principal.getName());
 		
 		if(bvo.getboardCat().equals("a_java")) {
 			model.addAttribute(service.readJava(boardno));

@@ -25,7 +25,7 @@
 
 			<div class="col-md-12 col-sm-12">
 				<ul class="social-icon">
-					<li><a href="#" class="fa fa-twitter"></a></li>
+					<li><a href="https://velog.io/@jonah" class="fa fa-archive"></a></li>
 					<li><a href="https://github.com/Godrl/" class="fa fa-git"></a></li>
 				</ul>
 			</div>

@@ -55,8 +55,8 @@
 					<li class=""><a href="/archives">Archives</a>
 						<div class="dropdown-content">
 							<ul id="category">
-								<li><a href="archives/java">Java</a></li>
-								<li><a href="archives/jsp">JSP</a></li>
+								<li><a href="/archives/java">Java</a></li>
+								<li><a href="/archives/jsp">JSP</a></li>
 							</ul>
 						</div>
 					</li>
