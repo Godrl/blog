@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!-- Footer Section -->
-
 <footer>
 	<div class="container">
 		<div class="row">
@@ -44,3 +43,9 @@
 
 </body>
 </html>
+
+<script type="text/javascript">
+	window.fncShowHideList = function(){
+		document.getElementById('#menu li').classList.toggle('active');s	
+	};
+</script>

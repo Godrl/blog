@@ -65,10 +65,14 @@ public class BoardController {
 	@RequestMapping(value = "/readboard", method = RequestMethod.GET)
 	public void readboard(@RequestParam("boardno") int boardno, @ModelAttribute("search") SearchCriteria search, Model model, BoardVO bvo, LoginVO Lvo, Principal principal)throws Exception{
 		logger.info("=====readboard=====");
-		
-		
-//		Lvo.setID(principal.getName());
-		
+				
+		if(principal == null) {
+			
+		}
+		else {
+			Lvo.setID(principal.getName());
+		}
+				
 		if(bvo.getboardCat().equals("a_java")) {
 			model.addAttribute(service.readJava(boardno));
 		}
@@ -77,7 +81,6 @@ public class BoardController {
 		}
 	
 	}
-	
 	
 	
 	//게시글 수정 화면
@@ -138,14 +141,20 @@ public class BoardController {
 	
 	//게시글 삭제처리
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-	public String delete(@RequestParam("boardno") int boardno, RedirectAttributes rttr,SearchCriteria search,BoardVO bvo)throws Exception{
+	public String delete(@RequestParam("boardno") int boardno, RedirectAttributes rttr,SearchCriteria search,BoardVO bvo, LoginVO Lvo, Principal principal)throws Exception{
 		logger.info("=====delete=====");
 		
-		if(bvo.getboardCat().equals("a_java")) {
-			service.delJava(boardno);
-		}
-		else if(bvo.getboardCat().equals("a_jsp")){
-			service.delJsp(boardno);
+		Lvo.setID(principal.getName());
+		
+		try {
+			if(Lvo.getID().equals(bvo.getWriter()) && bvo.getboardCat().equals("a_java")) {
+				service.delJava(boardno);
+			}
+			else if(Lvo.getID().equals(bvo.getWriter()) && bvo.getboardCat().equals("a_jsp")){
+				service.delJsp(boardno);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
 		}
 		
 		rttr.addAttribute("page", search.getPage());

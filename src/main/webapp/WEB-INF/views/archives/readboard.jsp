@@ -56,8 +56,10 @@
 	                    </div>
 	                    
 						<div class="blog-comment-form">
-							<input name="submit" type="submit" class="smoothScroll btn btn-default" id="bMod" value="Modify">
-							<input name="submit" type="submit" class="smoothScroll btn btn-default" id="bDel" value="Delete">
+							<sec:authorize access="isAuthenticated()">
+								<input name="submit" type="submit" class="smoothScroll btn btn-default" id="bMod" value="Modify">
+								<input name="submit" type="submit" class="smoothScroll btn btn-default" id="bDel" value="Delete">
+							</sec:authorize>
 							<input name="submit" type="submit" class="smoothScroll btn btn-default" id="bList" value="List">
 	                    </div>
 						
@@ -86,7 +88,9 @@
 									<div class="media-body">
 						    			<h3 class="media-heading">{{replyer}}</h3>
 										<span>{{prettifyDate regdate}}</span>
-										<a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modifyModal">Modify</a>											
+										<sec:authorize access="isAuthenticated()">
+											<a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modifyModal">Modify</a>
+										</sec:authorize>											
 										<div class="media-text"><p>{{replytext}}</p></div>	
 	                            	</div>
 	                        	</div>

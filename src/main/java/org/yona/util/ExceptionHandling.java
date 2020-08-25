@@ -21,6 +21,8 @@ public class ExceptionHandling {
 	public ModelAndView errorModelAndView(Exception e) {
 		logger.info("====================error====================");
 
+		e.printStackTrace();
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/error_common");
 		mv.addObject("exception", e);
