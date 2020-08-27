@@ -1,11 +1,11 @@
 # 원하는 디자인의 Template Customizing
 https://www.tooplate.com/view/2085-neuron
 
-## 로그인 여부에 따라 카테고리별로 CRUD기능 구현
-![image](https://user-images.githubusercontent.com/33336934/91385567-27333200-e86c-11ea-90c4-9f1935a2e9b0.png)
-
 # 스프링시큐리티5 버전 사용에 따른 스프링프레임워크 버전 업데이트
 ![image](https://user-images.githubusercontent.com/33336934/91257163-28992780-e7a4-11ea-8000-13b148116e14.png)
+
+## 로그인 여부에 따라 카테고리별로 CRUD기능 구현
+![image](https://user-images.githubusercontent.com/33336934/91385567-27333200-e86c-11ea-90c4-9f1935a2e9b0.png)
 
 # 스프링시큐리티5 에서는 비밀번호를 DB에 입력할 때 id나 noop을 앞에 같이 입력해줘야한다.
 ## Add noop 
