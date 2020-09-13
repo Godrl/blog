@@ -21,7 +21,6 @@ public class Authentication implements AuthenticationProvider{
 	@Inject
 	private LoginServiceImp service;
 	
-	@Inject
 	private BCryptPasswordEncoder pwEncoder;
 	
 	@SuppressWarnings("unchecked")
@@ -35,8 +34,7 @@ public class Authentication implements AuthenticationProvider{
 		
 //		스프링시큐리티 버전업데이트로 비밀번호앞에 식별자 {noop}이 추가되어 비밀번호를 비교할 때 noop을 빼고 비교한다.
 		String encodepw = user.getPassword().substring(6);
-		logger.info("userpw = "+userpw + " encodeuserpw = "+encodepw);
-		
+				
 		if(!pwEncoder.matches(userpw, encodepw)) {
 			logger.info("=====비밀번호가 불일치=====");
 			throw new BadCredentialsException(userid);

@@ -49,7 +49,7 @@
 	<insert id="signUp">
 		<![CDATA[
 			INSERT INTO		USERS(ID,EMAIL,PASSWORD)
-			VALUES			(#{id} ,#{email}, #{password}})
+			VALUES			(#{ID} ,#{email}, #{password})
 		]]>
 	</insert>
 	

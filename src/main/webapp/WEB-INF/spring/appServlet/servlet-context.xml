@@ -33,9 +33,11 @@
 	</beans:bean>
 	
 	<!--  요청에 맞는 Controller를 등록하는 부분-->
-	<context:component-scan base-package="org.yona.web" />
 	<context:component-scan base-package="org.yona.archives" />
-	<context:component-scan base-package="org.yona.reply" />
 	<context:component-scan base-package="org.yona.login" />
+	<context:component-scan base-package="org.yona.reply" />
+	<context:component-scan base-package="org.yona.restapi" />
+	<context:component-scan base-package="org.yona.web" />
+	<context:component-scan base-package="org.yona.util" />
 	
 </beans:beans>

@@ -16,6 +16,7 @@ import org.springframework.security.authentication.InternalAuthenticationService
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.yona.login.LoginService;
+import org.yona.login.LoginServiceImp;
 
 public class AuthenticationFail implements AuthenticationFailureHandler{
 
@@ -27,7 +28,7 @@ public class AuthenticationFail implements AuthenticationFailureHandler{
 	private String defaultUrl;//  실패시 보여줄 화면 url 
 	
 	@Inject
-	private LoginService service;
+	private LoginServiceImp service;
 
 	@Override
 	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {

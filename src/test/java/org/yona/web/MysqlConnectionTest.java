@@ -7,10 +7,10 @@ import org.junit.Test;
 
 public class MysqlConnectionTest {
 
-	private static final String DRIVER = "net.sf.log4jdbc.sql.jdbcapi.DriverSpy";
-//com.mysql.cj.jdbc.Driver
-//	private static final String URL = "jdbc:log4jdbc:mysql://EC2 IP:3306/blog?useSSL=false&serverTimezone=UTC";	
-	private static final String URL = "jdbc:mysql://127.0.0.1:3306/blog?useSSL=false&serverTimezone=Asia/Seoul";
+//	private static final String DRIVER = "net.sf.log4jdbc.sql.jdbcapi.DriverSpy";
+	private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
+	private static final String URL = "jdbc:log4jdbc:mysql://13.125.72.105:3306/blog?useSSL=false&serverTimezone=UTC";	
+//	private static final String URL = "jdbc:mysql://127.0.0.1:3306/blog?useSSL=false&serverTimezone=Asia/Seoul";
 	private static final String USER = "yona";
 	private static final String PW = "0902";
 

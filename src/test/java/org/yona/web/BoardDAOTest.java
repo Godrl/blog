@@ -33,6 +33,7 @@ public class BoardDAOTest {
 		bvo.setTitle("testTitle00");
 	    bvo.setContent("testcontent00");
 	    bvo.setWriter("yona");
+	    bvo.setboardCat("a_java");
 		
 //		dao.createboard(bvo);
 	}

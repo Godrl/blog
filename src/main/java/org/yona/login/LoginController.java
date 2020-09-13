@@ -1,6 +1,7 @@
+
 package org.yona.login;
 
-import javax.inject.Inject;
+import javax.annotation.Resource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +16,7 @@ public class LoginController {
 
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
-	@Inject
+	@Resource(name = "LoginService")
 	private LoginService service;
 	
 	@RequestMapping(value="/signin")

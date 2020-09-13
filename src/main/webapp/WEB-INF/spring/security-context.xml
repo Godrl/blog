@@ -40,18 +40,18 @@
         		
 	</http>
 	
-	<jdbc-user-service data-source-ref="dataSource" id="UserService"
+	<jdbc-user-service data-source-ref="dataSource" id="LoginService"
 		users-by-username-query="SELECT ID as userid, PASSWORD as userpw, ENABLED FROM users WHERE ID=?"
 		authorities-by-username-query="SELECT ID as userid, AUTHORITY FROM users WHERE ID=?"/>
 	
 	<authentication-manager>
 		<authentication-provider ref="Authentication"/>
-		<authentication-provider user-service-ref="UserService">
+		<authentication-provider user-service-ref="LoginService">
 			<password-encoder ref="bcryptPasswordEncoder"/>
 		</authentication-provider>
 	</authentication-manager>
 	
-	<beans:bean id="UserService" class="org.yona.login.LoginServiceImp"></beans:bean>
+	<beans:bean id="LoginService" class="org.yona.login.LoginServiceImp"></beans:bean>
 	<beans:bean id="Authentication" class="org.yona.util.Authentication"></beans:bean>
 
 	<beans:bean id="loginFailHandler" class="org.yona.util.AuthenticationFail">
@@ -66,7 +66,6 @@
 		<beans:property name="defaultUrl" value="/"></beans:property>
 	</beans:bean>
 	
-	<beans:bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+	<beans:bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 		
-	</beans:bean>
 </beans:beans>

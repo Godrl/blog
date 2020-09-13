@@ -59,7 +59,7 @@ public class UserDetailsImp implements UserDetails{
 //	계정이 사용가능한 지 리턴
 	@Override
 	public boolean isEnabled() {
-		return Enabled;
+		return true;
 	}
 
 	public String getName() {

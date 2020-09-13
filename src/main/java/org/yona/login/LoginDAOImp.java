@@ -3,6 +3,7 @@ package org.yona.login;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Repository;
 import org.yona.util.UserDetailsImp;
 
@@ -14,23 +15,28 @@ public class LoginDAOImp implements LoginDAO{
 	
 	private static final String namespace = "login";
 	
-	public UserDetailsImp getUserByID(String username) {
+	@Override
+	public UserDetailsImp getUserByID(String username)throws UsernameNotFoundException {
 		return session.selectOne(namespace+".selectUserByID",username);
 	}
 	
-	public void updateFailCnt(String username) {
+	@Override
+	public void updateFailCnt(String username) throws Exception{
 		session.update(namespace+".updateFailCnt",username);
 	}
 	
-	public int checkFailCnt(String username) {
+	@Override
+	public int checkFailCnt(String username) throws Exception{
 		return session.selectOne(namespace+".checkFailCnt",username);
 	}
 	
-	public void resetFailCnt(String username) {
+	@Override
+	public void resetFailCnt(String username) throws Exception{
 		session.update(namespace+".resetFailCnt",username);
 	}
 	
-	public void udpateEnabled(String username) {
+	@Override
+	public void udpateEnabled(String username) throws Exception{
 		session.selectOne(namespace+".updateEnabled",username);
 	}
 

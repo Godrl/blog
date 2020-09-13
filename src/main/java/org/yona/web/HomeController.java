@@ -42,28 +42,28 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String main() {
-		logger.info("==================index GET==================");
+		logger.info("=====index GET=====");
 		
 		return "index";
 	}
 	
 	@RequestMapping(value = "/archives", method = RequestMethod.GET)
 	public void archives() {
-		logger.info("==================archives GET==================");
+		logger.info("=====archives GET=====");
 		
 	}
 
 	@RequestMapping(value = "/archives", method = RequestMethod.POST)
 	public String archivesPOST(BoardVO bvo, RedirectAttributes rttr)throws Exception{
-		logger.info("====================archives POST====================");
+		logger.info("=====archives POST=====");
 		logger.info("bvo = "+bvo.toString());
 		
 		if(bvo.getboardCat().equals("a_java")) {
-			logger.info("====================rgst Java====================");
+			logger.info("=====rgst Java=====");
 			service.rgstJava(bvo);
 		}
 		else if(bvo.getboardCat().equals("a_jsp")){
-			logger.info("====================rgst Jsp====================");
+			logger.info("=====rgst Jsp=====");
 			service.rgstJsp(bvo);
 		}
 		
@@ -81,10 +81,5 @@ public class HomeController {
 		
 		return board;
 	}
-	
-	@RequestMapping(value = "/testajax", method = RequestMethod.GET)
-	public void testajax(){
-		logger.info("==================testajax==================");
-	}
-	
+		
 }

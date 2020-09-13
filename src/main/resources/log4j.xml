@@ -18,6 +18,10 @@
 	<logger name="org.yona.archives">
 		<level value="info"/>
 	</logger>
+	
+	<logger name="org.yona.login">
+		<level value="info"/>
+	</logger>
 
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">

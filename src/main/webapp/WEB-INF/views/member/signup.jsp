@@ -10,7 +10,7 @@
 			<div class="row">
 				<h3>Sign Up</h3>
 				<div class="col-md-offset-1 col-md-10 col-sm-12">
-					<form action="/signup" method="post">
+					<form action="/member/signup" method="post">
 						<div>
 							<label for="id"><b>ID</b></label>
 							<input type="text" class="form-control" name="ID" placeholder="ID" required/>

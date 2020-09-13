@@ -28,7 +28,7 @@ public class BoardController {
 	
 	//게시글 등록 화면
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public void registerGET(BoardVO bvo, Model model,UserDetailsImp user,Principal principal,LoginVO Lvo)throws Exception{
+	public void registerGET(BoardVO bvo, Model model,Principal principal,LoginVO Lvo)throws Exception{
 		logger.info("=====register GET=====");
 		
 		Lvo.setID(principal.getName());
@@ -67,7 +67,7 @@ public class BoardController {
 		logger.info("=====readboard=====");
 				
 		if(principal == null) {
-			
+			logger.info("=====guest=====");
 		}
 		else {
 			Lvo.setID(principal.getName());

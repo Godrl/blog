@@ -7,18 +7,18 @@ import org.slf4j.LoggerFactory;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 import org.yona.util.UserDetailsImp;
- 
+
+@Service("LoginService")
 public class LoginServiceImp implements UserDetailsService,LoginService{
 	
 	private static final Logger logger = LoggerFactory.getLogger(LoginServiceImp.class);
 	
 	@Inject
 	private LoginDAO dao;
-	
-	@Inject
-	private PasswordEncoder pwEncoder;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -53,6 +53,9 @@ public class LoginServiceImp implements UserDetailsService,LoginService{
 	@Override
 	public void insertUser(LoginVO Lvo) throws Exception {
 		logger.info("=====사용자 등록=====");
+		
+		BCryptPasswordEncoder pwEncoder = new BCryptPasswordEncoder();
+		
 		String encodePw = pwEncoder.encode(Lvo.getPassword());
 		Lvo.setPassword(encodePw);
 		

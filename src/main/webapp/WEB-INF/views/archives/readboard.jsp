@@ -79,24 +79,24 @@
 						</div>
 			    
 						<script id="template" type="text/x-handlebars-template">
-						{{#each .}}
-							<li class="replyLi" data-replyno={{replyno}}>
-								<div class="media">
-	                        		<div class="media-object pull-left">
-	                            		<img src="../resources/images/none.jpg" class="img-responsive img-circle" alt="Blog Image 11">
-	                            	</div>
-									<div class="media-body">
-						    			<h3 class="media-heading">{{replyer}}</h3>
-										<span>{{prettifyDate regdate}}</span>
-										<sec:authorize access="isAuthenticated()">
-											<a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modifyModal">Modify</a>
-										</sec:authorize>											
-										<div class="media-text"><p>{{replytext}}</p></div>	
-	                            	</div>
-	                        	</div>
-							</li>
-						{{/each}}		
-					</script>
+							{{#each .}}
+								<li class="replyLi" data-replyno={{replyno}}>
+									<div class="media">
+	                        			<div class="media-object pull-left">
+	                            			<img src="../resources/images/none.jpg" class="img-responsive img-circle" alt="Blog Image 11">
+	                            		</div>
+										<div class="media-body">
+						 	   				<h3 class="media-heading">{{replyer}}</h3>
+											<span>{{prettifyDate regdate}}</span>
+											<sec:authorize access="isAuthenticated()">
+												<a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modifyModal">Modify</a>
+											</sec:authorize>											
+											<div class="media-text"><p>{{replytext}}</p></div>	
+	    	                        	</div>
+	        	                	</div>
+								</li>
+							{{/each}}		
+						</script>
 						
 						<sec:authorize access="isAnonymous()">
 							<h3><a href="/member/signin">Please Sign-in to write a comment</a></h3>
