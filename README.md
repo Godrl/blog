@@ -1,12 +1,19 @@
-# 원하는 디자인의 template을 Customizing
-https://www.tooplate.com/view/2085-neuron
+## DevBlog Main Code
+### 로그인 여부에 따라 카테고리별로 CRUD기능 구현
+<img src="https://user-images.githubusercontent.com/33336934/91385567-27333200-e86c-11ea-90c4-9f1935a2e9b0.png" width="70%">
 
-# blog main
-<img width="1431" alt="스크린샷 2020-01-27 오후 5 52 21" src="https://user-images.githubusercontent.com/33336934/88947012-e971d680-d2ca-11ea-8f0f-957383b2c82c.png">
+### handlebars.js로 댓글 목록 구현
+<img src="https://user-images.githubusercontent.com/33336934/91385493-fbb04780-e86b-11ea-9d51-7949057f1d30.png" width="70%">
 
-# 카테고리별로 CRUD기능 구현
-<img width="327" alt="5 (1)" src="https://user-images.githubusercontent.com/33336934/88946713-8bdd8a00-d2ca-11ea-9365-7a389e3c8dfd.png">
+### noop추가, 로그인 할때 비밀번호 비교를 위해 noop제거(Because of the SpringSecurity5 version)
+<img src="https://user-images.githubusercontent.com/33336934/91256955-ae68a300-e7a3-11ea-9578-3fc555e17a2f.png" width="30%"> <img src="https://user-images.githubusercontent.com/33336934/91257023-d2c47f80-e7a3-11ea-82f8-ee0ce999d2e1.png" width="70%">
 
-# handlebars.js로 댓글 목록 구현
-<img width="843" alt="2" src="https://user-images.githubusercontent.com/33336934/88946885-c0514600-d2ca-11ea-9ac5-2cd6006938f5.png">
+## Program Stacks
+- Java8
+- Javascript
+- Spring5 / SpringSecurity5
+- Mysql8
+- Tomcat8
+
+
 
