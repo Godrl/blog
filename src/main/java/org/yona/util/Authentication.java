@@ -21,11 +21,11 @@ public class Authentication implements AuthenticationProvider{
 	@Inject
 	private LoginServiceImp service;
 	
-	private BCryptPasswordEncoder pwEncoder;
-	
 	@SuppressWarnings("unchecked")
 	@Override
 	public org.springframework.security.core.Authentication authenticate(org.springframework.security.core.Authentication authentication) throws AuthenticationException {
+		
+		BCryptPasswordEncoder pwEncoder = new BCryptPasswordEncoder();
 		
 		String userid = (String)authentication.getPrincipal();
 		String userpw = (String)authentication.getCredentials();
