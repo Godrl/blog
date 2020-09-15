@@ -88,9 +88,9 @@
 										<div class="media-body">
 						 	   				<h3 class="media-heading">{{replyer}}</h3>
 											<span>{{prettifyDate regdate}}</span>
-											<sec:authorize access="isAuthenticated()">
+											{{#conferAuth replyer}}
 												<a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modifyModal">Modify</a>
-											</sec:authorize>											
+											{{/conferAuth}}																						
 											<div class="media-text"><p>{{replytext}}</p></div>	
 	    	                        	</div>
 	        	                	</div>
@@ -154,6 +154,15 @@
 		var month = dateObj.getMonth() + 1;
 		var date = dateObj.getDate();
 		return year + "/" + month + "/" + date;
+	});
+	
+	Handlebars.registerHelper("conferAuth",function(replyer,block){
+		
+		var auth ="";
+		if(replyer == "${loginVO.ID}"){
+			auth += block.fn(); 
+		}
+		return auth;
 	});
 	
 
