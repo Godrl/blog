@@ -145,7 +145,6 @@
 	    xhr.setRequestHeader(header, token);
 	});
 
-//p424
 //날짜 표시 기능 추가
 	Handlebars.registerHelper("prettifyDate", function(timeValue) {
 	
@@ -156,6 +155,7 @@
 		return year + "/" + month + "/" + date;
 	});
 	
+//댓글 작성자만 댓글 수정 가능 기능 추가
 	Handlebars.registerHelper("conferAuth",function(replyer,block){
 		
 		var auth ="";
