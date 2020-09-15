@@ -56,10 +56,10 @@
 	                    </div>
 	                    
 						<div class="blog-comment-form">
-							<sec:authorize access="isAuthenticated()">
+							<c:if test="${loginVO.ID == boardVO.writer }" >
 								<input name="submit" type="submit" class="smoothScroll btn btn-default" id="bMod" value="Modify">
 								<input name="submit" type="submit" class="smoothScroll btn btn-default" id="bDel" value="Delete">
-							</sec:authorize>
+							</c:if>
 							<input name="submit" type="submit" class="smoothScroll btn btn-default" id="bList" value="List">
 	                    </div>
 						

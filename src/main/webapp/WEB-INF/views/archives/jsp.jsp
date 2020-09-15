@@ -41,7 +41,7 @@
 			<tr>
 				<td>${boardVO.boardno}</td>
 				<td><a href="/archives/readboard${pageutil.makeQuery(pageutil.cri.page) }&boardno=${boardVO.boardno}&boardCat=${boardVO.boardCat}">${boardVO.title} [${boardVO.replynum }]</a></td>
-				<td>yona</td>
+				<td>${boardVO.writer }</td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${boardVO.regdate }" /></td>
 				<td><span class="badge bg-red">${boardVO.boardview }</span></td>
 			</tr>
