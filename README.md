@@ -1,4 +1,4 @@
-## DevBlog Main Code
+## Main Code
 ### 로그인 여부에 따라 카테고리별로 CRUD기능 구현
 <img src="https://user-images.githubusercontent.com/33336934/91385567-27333200-e86c-11ea-90c4-9f1935a2e9b0.png" width="70%">
 
