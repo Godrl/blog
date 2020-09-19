@@ -63,12 +63,11 @@
 			<artifactId>aspectjtools</artifactId>
 		</dependency>
 		
-		<!--  imgScalr Lib-->
+		<!--  imgScalr Lib / File upload -->
 		<dependency>
 			<groupId>org.imgscalr</groupId>
 			<artifactId>imgscalr-lib</artifactId>
 		</dependency>
-		
 		<dependency>
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
