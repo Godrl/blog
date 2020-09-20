@@ -21,7 +21,7 @@
     	<listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
   	</listener>
 	
-	<!--  파일 업로드 시 한글이 꺠지지 않도록 설정-->
+	<!-- 한글이 꺠지지 않도록 설정-->
 	<filter>
 		<filter-name>encoding</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>

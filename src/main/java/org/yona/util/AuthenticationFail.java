@@ -46,13 +46,13 @@ public class AuthenticationFail implements AuthenticationFailureHandler{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			errormsg = MessageUtils.getMessage("error.BadCredentials");
+			errormsg = MessageUtil.getMessage("error.BadCredentials");
 		}else if(exception instanceof InternalAuthenticationServiceException) {
-			errormsg = MessageUtils.getMessage("error.AuthFail");
+			errormsg = MessageUtil.getMessage("error.AuthFail");
 		}else if(exception instanceof DisabledException) {
-			errormsg = MessageUtils.getMessage("error.Disable"); 
+			errormsg = MessageUtil.getMessage("error.Disable"); 
 		}else if(exception instanceof CredentialsExpiredException) {
-			errormsg = MessageUtils.getMessage("error.CredentialsExpired");
+			errormsg = MessageUtil.getMessage("error.CredentialsExpired");
 		}
 		
 		request.setAttribute(userid, username);

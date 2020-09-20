@@ -30,7 +30,7 @@
 		<constructor-arg ref="messageSource" />
 	</bean>
 	
-	<bean id="message" class="org.yona.util.MessageUtils">
+	<bean id="message" class="org.yona.util.MessageUtil">
 		<property name="messageSourceAccessor" ref="messageSourceAccessor" />
 	</bean>
 	

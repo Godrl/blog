@@ -12,11 +12,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.yona.login.LoginVO;
+import org.yona.util.FileUtil;
 import org.yona.util.PageUtil;
 import org.yona.util.SearchCriteria;
-import org.yona.util.UserDetailsImp;
 
 @Controller
 @RequestMapping("/archives/*")
@@ -37,16 +38,24 @@ public class BoardController {
 	
 	//게시글 등록 처리
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String registerPOST(BoardVO bvo, RedirectAttributes rttr)throws Exception{
+	public String registerPOST(BoardVO bvo, MultipartFile[] file, RedirectAttributes rttr)throws Exception{
 		logger.info("=====register POST=====");
 		
+		for(MultipartFile f : file) {
+			
+			logger.info("file = "+f.getOriginalFilename());
+			
+			FileUtil.uploadFile(f.getOriginalFilename(), f.getBytes());
+		}
+		
+				
 		if(bvo.getboardCat().equals("a_java")) {
 			service.rgstJava(bvo);
 		}
 		else if(bvo.getboardCat().equals("a_jsp")){
 			service.rgstJsp(bvo);
 		}
-		
+			
 		rttr.addFlashAttribute("msg", "register");
 		
 		String board = "";

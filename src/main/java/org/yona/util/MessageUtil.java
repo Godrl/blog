@@ -3,12 +3,12 @@ package org.yona.util;
 import java.util.Locale;
 import org.springframework.context.support.MessageSourceAccessor;
 
-public class MessageUtils {
+public class MessageUtil {
 	
 	private static MessageSourceAccessor msAcc = null;
 	
 	public void setMessageSourceAccessor(MessageSourceAccessor msAcc) {
-		MessageUtils.msAcc = msAcc;
+		MessageUtil.msAcc = msAcc;
 	}
 	
 	public static String getMessage(String code) {
