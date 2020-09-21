@@ -1,15 +1,12 @@
 package org.yona.util;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.UUID;
 
 import javax.annotation.Resource;
-import javax.imageio.ImageIO;
 
-import org.imgscalr.Scalr;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.FileCopyUtils;
@@ -23,50 +20,23 @@ public class FileUtil {
 	
 	public static String uploadFile(String originalName, byte[] fileData) throws Exception {
 
+//		중복되지 않는 고유한 키값 생성
 		UUID uid = UUID.randomUUID();
-
 		String savedName = uid.toString() + "_" + originalName;
 
 		String savedPath = calcPath();
 
 		File target = new File(uploadPath + savedPath, savedName);
 
+//		데이터가 담긴 바이트의 배열을 파일에 기록한다
 		FileCopyUtils.copy(fileData, target);
 
 		String formatName = originalName.substring(originalName.lastIndexOf(".") + 1);
 
 		String uploadedFileName = null;
 
-		if (MediaUtil.getMediaType(formatName) != null) {
-			uploadedFileName = makeThumbnail(savedPath, savedName);
-		} else {
-			uploadedFileName = makeIcon(savedPath, savedName);
-		}
-
 		return uploadedFileName;
 
-	}
-
-	private static String makeIcon(String path, String fileName) throws Exception {
-
-		String iconName = uploadPath + path + File.separator + fileName;
-
-		return iconName.substring(uploadPath.length()).replace(File.separatorChar, '/');
-	}
-
-	private static String makeThumbnail(String path, String fileName) throws Exception {
-
-		BufferedImage sourceImg = ImageIO.read(new File(uploadPath + path, fileName));
-
-		BufferedImage destImg = Scalr.resize(sourceImg, Scalr.Method.AUTOMATIC, Scalr.Mode.FIT_TO_HEIGHT, 100);
-
-		String thumbnailName = uploadPath + path + File.separator + "s_" + fileName;
-
-		File newFile = new File(thumbnailName);
-		String formatName = fileName.substring(fileName.lastIndexOf(".") + 1);
-
-		ImageIO.write(destImg, formatName.toUpperCase(), newFile);
-		return thumbnailName.substring(uploadPath.length()).replace(File.separatorChar, '/');
 	}
 
 	private static String calcPath() {

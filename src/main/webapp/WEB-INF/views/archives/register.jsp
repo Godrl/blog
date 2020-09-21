@@ -44,8 +44,7 @@
 									</select>
 									<input type="text" class="form-control" placeholder="Title" name="title" required>
 									<textarea name="content" rows="20" class="form-control" id="content" placeholder="Content" required="required"></textarea>
-									<a href ="" onclick="addFile()">파일 추가</a>
-									<input type="file" multiple>
+									
 									<input type="text" name="writer" class="form-control" value="${loginVO.ID }" readonly="readonly">
 									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 									<div class="col-md-3 col-sm-4">
@@ -64,10 +63,6 @@
 
 <script>
 	
-	function addFile(){
 		
-		var str = "<div class= "
-	}
-	
 </script>
 
