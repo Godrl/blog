@@ -50,5 +50,8 @@ public interface BoardDAO {
 	public void UdtjspView(Integer boardno)throws Exception;
 	
 	
-		 
+	/*
+	 * File Upload
+	*/	 
+	public void addAttach(String filename, String boardCat);
 }

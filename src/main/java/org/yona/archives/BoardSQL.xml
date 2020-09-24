@@ -144,4 +144,14 @@
 	</update>
 	
 	
+	
+	
+	<!--  fileUpload-->
+	
+	<insert id="addAttach">
+		INSERT INTO A_ATTACH(FILENAME, BOARDCAT, BOARDNO)
+		VALUES		(#{filename}, #{boardCat}, LAST_INSERT_ID())	
+	</insert>
+	
+	
 </mapper>

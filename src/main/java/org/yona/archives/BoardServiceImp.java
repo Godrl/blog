@@ -17,9 +17,16 @@ public class BoardServiceImp implements BoardService{
 	/*
 	 * Java
 	*/
+	
+	@Transactional
 	@Override
 	public void rgstJava(BoardVO bvo) throws Exception {
 		dao.rgstJava(bvo);
+		
+		String[] files = bvo.getFiles();
+		if(files == null) return;
+		
+		for(String filename : files) dao.addAttach(filename, bvo.getboardCat());
 	}
 
 	@Override
@@ -68,9 +75,16 @@ public class BoardServiceImp implements BoardService{
 	/*
 	 * Jsp
 	*/
+	
+	@Transactional
 	@Override
 	public void rgstJsp(BoardVO bvo) throws Exception {
 		dao.rgstJsp(bvo);
+		
+		String[] files = bvo.getFiles();
+		if(files == null) return;
+		
+		for(String filename : files) dao.addAttach(filename, bvo.getboardCat());
 	}
 
 	@Override

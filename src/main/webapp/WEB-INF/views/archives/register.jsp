@@ -44,6 +44,12 @@
 									</select>
 									<input type="text" class="form-control" placeholder="Title" name="title" required>
 									<textarea name="content" rows="20" class="form-control" id="content" placeholder="Content" required="required"></textarea>
+									<div id="fileGroup">
+										<button type="button" onclick="addFile()">파일 추가</button>
+										<div id="fileList">
+											<input type="file" name="file"> <a href="">삭제</a>
+										</div>
+									</div>
 									
 									<input type="text" name="writer" class="form-control" value="${loginVO.ID }" readonly="readonly">
 									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -61,8 +67,12 @@
 
 <%@ include file="../include/footer.jsp"%>
 
-<script>
+<script type="text/javascript">
 	
+	function addFile(){
+		var str = "<div id='fileList'> <input type='file' name='file'> <a href=''>삭제</a> </div>"
+		$("#fileGroup").append(str);
+	}
 		
 </script>
 

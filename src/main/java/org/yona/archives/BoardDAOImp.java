@@ -122,6 +122,20 @@ public class BoardDAOImp implements BoardDAO{
 	public void UdtjspView(Integer boardno) throws Exception {
 		session.update(namespace+".UdtjspView", boardno);
 	}
+
+	
+	/*
+	 * File Upload
+	*/
+	@Override
+	public void addAttach(String filename, String boardCat) {
+		Map<String,Object> map = new HashMap<String,Object>();
+		
+		map.put("filename", filename);
+		map.put("boardCat", boardCat);
+		
+		session.insert(namespace+".addAttach",map);
+	}
 	
 	
 	
