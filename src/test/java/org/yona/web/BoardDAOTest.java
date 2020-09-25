@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -26,6 +27,7 @@ public class BoardDAOTest {
 	@Inject
 	private BoardDAO dao;
 	
+	@Ignore
 	@Test
 	public void testCreateboard()throws Exception{
 		
@@ -35,16 +37,18 @@ public class BoardDAOTest {
 	    bvo.setWriter("yona");
 	    bvo.setboardCat("a_java");
 		
-//		dao.createboard(bvo);
+		dao.rgstJava(bvo);
 	}
 	
 	
+	@Ignore
 	@Test
 	public void testReadboard()throws Exception{
-//		dao.read(1);
+		dao.readJava(844);
 	}
 	
 	
+	@Ignore
 	@Test
 	public void testUpdateboard()throws Exception{
 		BoardVO bvo = new BoardVO();
@@ -53,26 +57,29 @@ public class BoardDAOTest {
 		bvo.setTitle("수정된 제목");
 		bvo.setContent("수정된 내용");
 		
-//		dao.update(bvo);
+		dao.modJava(bvo);
 	}
 	
 	
+	@Ignore
 	@Test
 	public void testDeleteboard()throws Exception{
-//		dao.delete(2);
+		dao.delJava(844);
 	}
 	
+	@Ignore
 	@Test
 	public void testListcri()throws Exception{
 		PageUtil pInfo = new PageUtil();
 		
-	/*	List<BoardVO> list = dao.listPinfo(pInfo);
+		List<BoardVO> list = dao.javalist();
 		
 		for(BoardVO bvo : list) {
 			logger.info(bvo.getBoardno() + ":" + bvo.getTitle());
-		}*/
+		}
 	}
 	
+	@Ignore
 	@Test
 	public void testURI()throws Exception{
 		
@@ -82,10 +89,10 @@ public class BoardDAOTest {
 								.queryParam("perPageNum", 10)
 								.build();
 		
-//		logger.info("/archives/java?boardno=12&perPageNum=10");
-//		logger.info(uriCompo.toString());
+		logger.info(uriCompo.toString());
 	}
 	
+	@Ignore
 	@Test
 	public void testURI01()throws Exception{
 		
@@ -97,8 +104,7 @@ public class BoardDAOTest {
 								.expand("archives","java")
 								.encode();
 		
-//		logger.info("archives/java?boardno=12&perPageNum=10");
-//		logger.info(uriCompo.toString());
+		logger.info(uriCompo.toString());
 	}
 	
 	@Test

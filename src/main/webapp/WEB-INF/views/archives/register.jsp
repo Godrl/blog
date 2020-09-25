@@ -47,14 +47,13 @@
 									<div id="fileGroup">
 										<button type="button" onclick="addFile()">파일 추가</button>
 										<div id="fileList">
-											<input type="file" name="file"> <a href="">삭제</a>
+											<input type="file" name="file"><button type="button" name="fileDel">삭제</button>
 										</div>
 									</div>
-									
 									<input type="text" name="writer" class="form-control" value="${loginVO.ID }" readonly="readonly">
 									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 									<div class="col-md-3 col-sm-4">
-										<input name="submit" type="submit" class="form-control" id="submit" value="Register">
+										<input name="submit" type="submit" class="form-control" id="regist" value="Register">
 									</div>
 								</form>
 							</div>
@@ -69,9 +68,27 @@
 
 <script type="text/javascript">
 	
+	var count = 0;
+	
 	function addFile(){
-		var str = "<div id='fileList'> <input type='file' name='file'> <a href=''>삭제</a> </div>"
+		if( count > 4){
+			alert("최대 파일업로드 개수는 5개입니다");
+			return false;
+		}
+		
+		var str = "<div id='fileList'> <input type='file' name='file'> <button type='button' name='fileDel'>삭제</button> </div>"
 		$("#fileGroup").append(str);
+		$("button[name='fileDel']").on("click",function(event){
+			event.preventDefault();
+			deleteFile($(this));
+		})
+		
+		count++;
+		
+	}
+	
+	function deleteFile(obj){
+		obj.parent().remove();
 	}
 		
 </script>
