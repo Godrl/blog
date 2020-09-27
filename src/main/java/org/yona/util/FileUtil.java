@@ -18,11 +18,11 @@ public class FileUtil {
 	@Resource(name = "uploadPath")
 	private static String uploadPath;
 	
-	public static String uploadFile(String originalName, byte[] fileData) throws Exception {
+	public static String uploadFile(String string, byte[] fileData) throws Exception {
 
 //		중복되지 않는 고유한 키값 생성
 		UUID uid = UUID.randomUUID();
-		String savedName = uid.toString() + "_" + originalName;
+		String savedName = uid.toString() + "_" + string;
 
 		String savedPath = calcPath();
 
@@ -30,8 +30,6 @@ public class FileUtil {
 
 //		데이터가 담긴 바이트의 배열을 파일에 기록한다
 		FileCopyUtils.copy(fileData, target);
-
-		String formatName = originalName.substring(originalName.lastIndexOf(".") + 1);
 
 		String uploadedFileName = null;
 

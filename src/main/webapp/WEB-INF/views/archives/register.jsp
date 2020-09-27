@@ -44,12 +44,13 @@
 									</select>
 									<input type="text" class="form-control" placeholder="Title" name="title" required>
 									<textarea name="content" rows="20" class="form-control" id="content" placeholder="Content" required="required"></textarea>
+									<button type="button" onclick="addFile()">파일 추가</button>
 									<div id="fileGroup">
-										<button type="button" onclick="addFile()">파일 추가</button>
-										<div id="fileList">
-											<input type="file" name="file"><button type="button" name="fileDel">삭제</button>
+										<div>
+											<input type="file" name="file" id="attach">	<button type="button" name="fileDel">삭제</button>
 										</div>
 									</div>
+									<div id="fileList"></div>
 									<input type="text" name="writer" class="form-control" value="${loginVO.ID }" readonly="readonly">
 									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 									<div class="col-md-3 col-sm-4">
@@ -68,7 +69,15 @@
 
 <script type="text/javascript">
 	
+	var token = $("meta[name='_csrf']").attr("content");
+	var header = $("meta[name='_csrf_header']").attr("content");
+	$(document).ajaxSend(function(e, xhr, options) {
+	    xhr.setRequestHeader(header, token);
+	});
+	
 	var count = 0;
+	var files= [];
+	var fileCnt = 0;
 	
 	function addFile(){
 		if( count > 4){
@@ -76,7 +85,7 @@
 			return false;
 		}
 		
-		var str = "<div id='fileList'> <input type='file' name='file'> <button type='button' name='fileDel'>삭제</button> </div>"
+		var str = "<div> <input type='file' name='file'> <button type='button' name='fileDel'>삭제</button> </div>"
 		$("#fileGroup").append(str);
 		$("button[name='fileDel']").on("click",function(event){
 			event.preventDefault();
@@ -90,6 +99,35 @@
 	function deleteFile(obj){
 		obj.parent().remove();
 	}
+	
+	$("#attach").change(function(event){
+		files[fileCnt] = event.target.files[fileCnt];
 		
+		var str = "<label>"+(fileCnt+1)+" - "+event.target.files[fileCnt].name+"</label><br>"
+		$("#fileList").append(str);
+		
+		fileCnt++;
+		alert(files);
+	})
+		
+	$("#regist").on("click",function(event){
+		event.preventDefault();
+				
+		var formData = new FormData();
+					
+		$.ajax({
+			type : 'post',
+			enctype : 'multipart/form-data',
+			url : '/archives/attach',
+			dataType : 'text',
+			data : formData,
+			processData : false,
+			contentType : false,
+			success : function(data){
+				alert(data);
+				
+			}
+		});
+	})
 </script>
 

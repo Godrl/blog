@@ -1,17 +1,21 @@
 package org.yona.archives;
 
+import java.io.IOException;
 import java.security.Principal;
 
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.yona.login.LoginVO;
@@ -38,17 +42,9 @@ public class BoardController {
 	
 	//게시글 등록 처리
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String registerPOST(BoardVO bvo, MultipartFile[] file, RedirectAttributes rttr)throws Exception{
+	public String registerPOST(BoardVO bvo, RedirectAttributes rttr)throws Exception{
 		logger.info("=====register POST=====");
 		
-		for(MultipartFile f : file) {
-			
-			logger.info("file = "+f.getOriginalFilename());
-			
-			FileUtil.uploadFile(f.getOriginalFilename(), f.getBytes());
-		}
-		
-				
 		if(bvo.getboardCat().equals("a_java")) {
 			service.rgstJava(bvo);
 		}
@@ -214,5 +210,26 @@ public class BoardController {
 		model.addAttribute("pageutil", pageutil);
 		
 	}
-	
+
+	@ResponseBody
+	@RequestMapping(value = "/attach", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	public ResponseEntity<String> attach(MultipartFile[] files) throws IOException, Throwable {
+						
+		ResponseEntity<String> entity = null;
+		
+		try {
+			for(MultipartFile file : files) {
+				
+				logger.info("file = "+file.getOriginalFilename());
+				
+				entity = new ResponseEntity<>(FileUtil.uploadFile(file.getOriginalFilename(), file.getBytes()),HttpStatus.CREATED);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+			
+		return entity;
+				
+	}
 }
