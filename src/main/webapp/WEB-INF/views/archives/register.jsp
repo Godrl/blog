@@ -76,9 +76,7 @@
 	});
 	
 	var count = 0;
-	var files= [];
-	var fileCnt = 0;
-	
+		
 	function addFile(){
 		if( count > 4){
 			alert("최대 파일업로드 개수는 5개입니다");
@@ -100,21 +98,36 @@
 		obj.parent().remove();
 	}
 	
+	
+	var files= [];
+	var fileCnt = 0;
+	
 	$("#attach").change(function(event){
-		files[fileCnt] = event.target.files[fileCnt];
-		
-		var str = "<label>"+(fileCnt+1)+" - "+event.target.files[fileCnt].name+"</label><br>"
+		files[fileCnt] = event.target.files[0];
+			
+		var str = "<label>"+(fileCnt+1)+" - "+event.target.files[0].name+"</label><br>"
 		$("#fileList").append(str);
 		
 		fileCnt++;
-		alert(files);
-	})
+	});
 		
 	$("#regist").on("click",function(event){
 		event.preventDefault();
-				
+	
+		var fileLen = files.length;
+		
+		for(var i=0; i<fileLen; i++){
+			alert("파일 = "+files[i]);
+		}
+		
 		var formData = new FormData();
-					
+		
+		for(var i=0; i<fileLen; i++){
+			formData.append("attach["+i+"]", files[i]);
+		}
+		
+		alert(formData);
+		
 		$.ajax({
 			type : 'post',
 			enctype : 'multipart/form-data',
@@ -124,10 +137,10 @@
 			processData : false,
 			contentType : false,
 			success : function(data){
-				alert(data);
-				
+				alert("data = "+data);
+				fileCnt = 0;
 			}
 		});
-	})
+	});
 </script>
 

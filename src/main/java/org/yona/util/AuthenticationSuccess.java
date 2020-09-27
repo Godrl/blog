@@ -41,7 +41,7 @@ public class AuthenticationSuccess implements AuthenticationSuccessHandler{
 		try {
 			service.resetFailCnt(username);
 		} catch (Exception e) {
-			logger.info("=====FailCount Reset Error=====");
+			logger.error("Auth fail = "+e);
 		}
 		
 		clearAuthenticationAttributes(request);

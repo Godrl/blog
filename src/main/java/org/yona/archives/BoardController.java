@@ -103,7 +103,7 @@ public class BoardController {
 				model.addAttribute(service.readJsp(boardno));
 			}
 		}catch(Exception e) {
-			e.printStackTrace();
+			logger.error("modify error = "+e);
 		}
 	}
 	
@@ -159,7 +159,7 @@ public class BoardController {
 				service.delJsp(boardno);
 			}
 		}catch(Exception e) {
-			e.printStackTrace();
+			logger.error("delete error = "+e);
 		}
 		
 		rttr.addAttribute("page", search.getPage());
@@ -214,20 +214,21 @@ public class BoardController {
 	@ResponseBody
 	@RequestMapping(value = "/attach", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	public ResponseEntity<String> attach(MultipartFile[] files) throws IOException, Throwable {
-						
+		logger.info("=====attach=====");
+
 		ResponseEntity<String> entity = null;
-		
+	
 		try {
 			for(MultipartFile file : files) {
-				
 				logger.info("file = "+file.getOriginalFilename());
-				
 				entity = new ResponseEntity<>(FileUtil.uploadFile(file.getOriginalFilename(), file.getBytes()),HttpStatus.CREATED);
+				logger.info("entity"+entity);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("attach_error = "+e);
 			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
+		
 			
 		return entity;
 				

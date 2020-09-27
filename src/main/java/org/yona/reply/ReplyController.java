@@ -39,7 +39,7 @@ public class ReplyController {
 				entity = new ResponseEntity<String>("success",HttpStatus.OK);
 				
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error("javaReply register error = "+e);
 				entity = new ResponseEntity<String>(e.getMessage(),HttpStatus.BAD_REQUEST);
 			}
 		}
@@ -49,7 +49,7 @@ public class ReplyController {
 				entity = new ResponseEntity<String>("success",HttpStatus.OK);
 				
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error("jspReply register error = "+e);
 				entity = new ResponseEntity<String>(e.getMessage(),HttpStatus.BAD_REQUEST);
 			}
 		}
@@ -71,7 +71,7 @@ public class ReplyController {
 				rservice.JavaRplmod(rvo);
 				entity = new ResponseEntity<String>("success", HttpStatus.OK);
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error("javaReply modify error = "+e);
 				entity = new ResponseEntity<String>(e.getMessage(),HttpStatus.BAD_REQUEST);
 			}
 			
@@ -82,7 +82,7 @@ public class ReplyController {
 				rservice.JspRplmod(rvo);
 				entity = new ResponseEntity<String>("success", HttpStatus.OK);
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error("jspReply modify error = "+e);
 				entity = new ResponseEntity<String>(e.getMessage(),HttpStatus.BAD_REQUEST);
 			}
 		}
@@ -103,7 +103,7 @@ public class ReplyController {
 				rservice.JavaRpldel(replyno);
 				entity = new ResponseEntity<String>("success", HttpStatus.OK);
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error("javaReply delete error = "+e);
 				entity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 			}
 		}
@@ -112,7 +112,7 @@ public class ReplyController {
 				rservice.JspRpldel(replyno);
 				entity = new ResponseEntity<String>("success", HttpStatus.OK);
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error("jspReply delete error = "+e);
 				entity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 			}
 		}
@@ -132,7 +132,7 @@ public class ReplyController {
 			try {
 				entity = new ResponseEntity<>(rservice.JavaRplall(boardno),HttpStatus.OK);
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error("javaReply allCheck error = "+e);
 				entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 			}
 		}
@@ -140,7 +140,7 @@ public class ReplyController {
 			try {
 				entity = new ResponseEntity<>(rservice.JspRplall(boardno),HttpStatus.OK);
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error("jspReply allCheck error = "+e);
 				entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 			}
 		}
@@ -175,7 +175,7 @@ public class ReplyController {
 				
 				entity = new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error("javaReply check error = "+e);
 				entity = new ResponseEntity<Map<String,Object>>(HttpStatus.BAD_REQUEST);
 			}
 		}
@@ -199,7 +199,7 @@ public class ReplyController {
 				
 				entity = new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error("jspReply check error = "+e);
 				entity = new ResponseEntity<Map<String,Object>>(HttpStatus.BAD_REQUEST);
 			}
 		}
