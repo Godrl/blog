@@ -218,18 +218,23 @@ public class BoardController {
 
 		ResponseEntity<String> entity = null;
 	
+		logger.info("len = "+files.length);
+		
 		try {
 			for(MultipartFile file : files) {
 				logger.info("file = "+file.getOriginalFilename());
-				entity = new ResponseEntity<>(FileUtil.uploadFile(file.getOriginalFilename(), file.getBytes()),HttpStatus.CREATED);
-				logger.info("entity"+entity);
+				entity = new ResponseEntity<>(FileUtil.uploadFile(file.getOriginalFilename(), file.getBytes()), HttpStatus.CREATED);
 			}
-		} catch (Exception e) {
-			logger.error("attach_error = "+e);
+		} catch (IOException e) {
+			logger.error("attach_IOE = "+e);
 			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			throw e;
+		} catch (Throwable e) {
+			logger.error("attach_ThrowE = "+e);
+			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			throw e;
 		}
-		
-			
+				
 		return entity;
 				
 	}

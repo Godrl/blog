@@ -115,19 +115,12 @@
 		event.preventDefault();
 	
 		var fileLen = files.length;
-		
-		for(var i=0; i<fileLen; i++){
-			alert("파일 = "+files[i]);
-		}
-		
 		var formData = new FormData();
 		
 		for(var i=0; i<fileLen; i++){
 			formData.append("attach["+i+"]", files[i]);
 		}
-		
-		alert(formData);
-		
+				
 		$.ajax({
 			type : 'post',
 			enctype : 'multipart/form-data',
@@ -136,8 +129,8 @@
 			data : formData,
 			processData : false,
 			contentType : false,
-			success : function(data){
-				alert("data = "+data);
+			success : function(result){
+				console.log("result = "+result);
 				fileCnt = 0;
 			}
 		});
