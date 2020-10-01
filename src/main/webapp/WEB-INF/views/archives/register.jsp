@@ -97,8 +97,7 @@
 	function deleteFile(obj){
 		obj.parent().remove();
 	}
-	
-	
+		
 	var files= [];
 	var fileCnt = 0;
 	
@@ -123,7 +122,6 @@
 				
 		$.ajax({
 			type : 'post',
-			enctype : 'multipart/form-data',
 			url : '/archives/attach',
 			dataType : 'text',
 			data : formData,
