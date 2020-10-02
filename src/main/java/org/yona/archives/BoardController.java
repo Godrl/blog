@@ -2,7 +2,6 @@ package org.yona.archives;
 
 import java.io.IOException;
 import java.security.Principal;
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.yona.login.LoginVO;
 import org.yona.util.FileUtil;
@@ -215,20 +213,15 @@ public class BoardController {
 
 	@ResponseBody
 	@RequestMapping(value = "/attach", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
-	public ResponseEntity<String> attach(MultipartHttpServletRequest request) throws IOException, Throwable {
+	public ResponseEntity<String> attach(MultipartFile file) throws IOException, Throwable {
 		logger.info("=====attach=====");
 
 		ResponseEntity<String> entity = null;
-	
-		List<MultipartFile> files = request.getFiles("file");
-		
-		logger.info("file exitst = "+files.isEmpty());
 				
 		try {
-			for(MultipartFile file : files) {
-				logger.info("file = "+file.getOriginalFilename());
-				entity = new ResponseEntity<>(FileUtil.uploadFile(file.getOriginalFilename(), file.getBytes()), HttpStatus.CREATED);
-			}
+			logger.info("type = "+file.getContentType());
+			logger.info("file = "+file.getOriginalFilename());
+			entity = new ResponseEntity<>(FileUtil.uploadFile(file.getOriginalFilename(), file.getBytes()), HttpStatus.CREATED);
 		} catch (IOException e) {
 			logger.error("attach_IOE = "+e);
 			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);

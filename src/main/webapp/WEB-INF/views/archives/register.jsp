@@ -28,7 +28,7 @@
 						<div class="blog-post-des">
 							<div class="blog-comment-form">
 								<h3>New board</h3>
-								<form role="form" method="post" enctype="mutipart/form-data">
+								<form role="form" method="post" enctype="mutipart/form-data" id="regist">
 									<select name="boardCat">
 										<option value="">
 											Category
@@ -44,17 +44,14 @@
 									</select>
 									<input type="text" class="form-control" placeholder="Title" name="title" required>
 									<textarea name="content" rows="20" class="form-control" id="content" placeholder="Content" required="required"></textarea>
-									<button type="button" onclick="addFile()">파일 추가</button>
 									<div id="fileGroup">
-										<div>
-											<input type="file" name="file" id="attach">	<button type="button" name="fileDel">삭제</button>
-										</div>
+										<input type="file" name="file" id="attach">
 									</div>
 									<div id="fileList"></div>
 									<input type="text" name="writer" class="form-control" value="${loginVO.ID }" readonly="readonly">
 									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 									<div class="col-md-3 col-sm-4">
-										<input name="submit" type="submit" class="form-control" id="regist" value="Register">
+										<input name="submit" type="submit" class="form-control" value="Register">
 									</div>
 								</form>
 							</div>
@@ -74,52 +71,20 @@
 	$(document).ajaxSend(function(e, xhr, options) {
 	    xhr.setRequestHeader(header, token);
 	});
-	
-	var count = 0;
 		
-	function addFile(){
-		if( count > 4){
-			alert("최대 파일업로드 개수는 5개입니다");
-			return false;
-		}
-		
-		var str = "<div> <input type='file' name='file'> <button type='button' name='fileDel'>삭제</button> </div>"
-		$("#fileGroup").append(str);
-		$("button[name='fileDel']").on("click",function(event){
-			event.preventDefault();
-			deleteFile($(this));
-		})
-		
-		count++;
-		
-	}
-	
-	function deleteFile(obj){
-		obj.parent().remove();
-	}
-		
-	var files= [];
 	var fileCnt = 0;
 	
 	$("#attach").change(function(event){
-		files[fileCnt] = event.target.files[0];
+		var file = event.target.files;
+		var formData = new FormData();
 			
-		var str = "<label>"+(fileCnt+1)+" - "+event.target.files[0].name+"</label><br>"
+		var str = "<label>"+(fileCnt+1)+" - "+file[0]+"</label> <a>삭제</a><br>";
 		$("#fileList").append(str);
 		
 		fileCnt++;
-	});
 		
-	$("#regist").on("click",function(event){
-		event.preventDefault();
-	
-		var fileLen = files.length;
-		var formData = new FormData();
+		formData.append("attach", file[0]);
 		
-		for(var i=0; i<fileLen; i++){
-			formData.append("attach["+i+"]", files[i]);
-		}
-				
 		$.ajax({
 			type : 'post',
 			url : '/archives/attach',
@@ -133,5 +98,15 @@
 			}
 		});
 	});
+		
+	$("#regist").submit(function(event){
+		event.preventDefault();
+		
+		var that = $(this);
+		var str = "";
+		
+		alert("that = "+that);
+	});
+	
 </script>
 
