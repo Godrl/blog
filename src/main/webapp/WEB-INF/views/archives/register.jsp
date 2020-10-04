@@ -28,8 +28,7 @@
 					<div class="blog-post-des">
 						<div class="blog-comment-form">
 							<h3>New board</h3>
-							<form role="form" method="post" enctype="mutipart/form-data"
-								id="regist">
+							<form role="form" method="post" enctype="multipart/form-data" id="regist">
 								<select name="boardCat">
 									<option value="">Category</option>
 									<option value="a_java">
@@ -73,8 +72,13 @@
 
 	function attach(event) {
 
-		var file = event.target.files;
-		console.log("file = "+file);
+		var f = this.files[0];
+		console.log("f = "+f);
+		
+		//var file = event.target.files;
+		//console.log("file = "+file);
+		
+		
 		
 		var formData = new FormData();
 
@@ -97,8 +101,6 @@
 				fileCnt = 0;
 			}
 		});
-
-		document.selection.clear();
 	};
 
 	$("#regist").submit(function(event) {
